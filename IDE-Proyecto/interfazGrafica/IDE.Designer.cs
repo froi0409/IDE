@@ -222,11 +222,6 @@
             this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 16;
-            this.listBox1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(204, 436);
@@ -252,6 +247,7 @@
             this.richTextBox1.Enabled = false;
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.richTextBox1.Size = new System.Drawing.Size(48, 436);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
@@ -264,6 +260,7 @@
             this.richTextBox2.Size = new System.Drawing.Size(837, 436);
             this.richTextBox2.TabIndex = 1;
             this.richTextBox2.Text = "";
+            this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
             // 
             // button6
             // 
@@ -275,6 +272,7 @@
             this.button6.Size = new System.Drawing.Size(30, 30);
             this.button6.TabIndex = 5;
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button5
             // 

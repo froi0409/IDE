@@ -12,9 +12,11 @@ namespace IDE_Proyecto.interfazGrafica
 {
     public partial class IDE : Form
     {
+        private int cantLineas = 1;
         public IDE()
         {
             InitializeComponent();
+            richTextBox1.Text = "1";
         }
 
         private void IDE_Load(object sender, EventArgs e)
@@ -29,10 +31,26 @@ namespace IDE_Proyecto.interfazGrafica
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listBox1.SelectedIndex == 1)
+            
+        }
+
+        private void richTextBox2_TextChanged(object sender, EventArgs e)
+        {
+            int cantLineasRT = richTextBox2.Lines.Length;
+            if(cantLineasRT != cantLineas)
             {
-                MessageBox.Show("JAJAJAJA SIUUU");
+                cantLineas = cantLineasRT;
+                richTextBox1.Clear();
+                for(int i = 1; i <= cantLineasRT; i++)
+                {
+                    richTextBox1.AppendText(i + "\n");
+                }
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(richTextBox2.SelectionStart.ToString());
         }
     }
 }
