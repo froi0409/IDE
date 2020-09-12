@@ -21,5 +21,18 @@ namespace IDE_Proyecto.interfazGrafica
         {
 
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBox1.SelectedIndex == 1)
+            {
+                MessageBox.Show("JAJAJAJA SIUUU");
+            }
+        }
     }
 }

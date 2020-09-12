@@ -63,9 +63,29 @@ namespace IDE_Proyecto.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap flexible_opt {
+            get {
+                object obj = ResourceManager.GetObject("flexible_opt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap folder_3_opt {
             get {
                 object obj = ResourceManager.GetObject("folder-3_opt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap folder_3_opt1 {
+            get {
+                object obj = ResourceManager.GetObject("folder-3_opt1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,6 +103,16 @@ namespace IDE_Proyecto.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap folder_opt1 {
+            get {
+                object obj = ResourceManager.GetObject("folder_opt1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap notepad_3_opt {
             get {
                 object obj = ResourceManager.GetObject("notepad-3_opt", resourceCulture);
@@ -93,9 +123,29 @@ namespace IDE_Proyecto.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap notepad_3_opt1 {
+            get {
+                object obj = ResourceManager.GetObject("notepad-3_opt1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap notepad_opt {
             get {
                 object obj = ResourceManager.GetObject("notepad_opt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap notepad_opt1 {
+            get {
+                object obj = ResourceManager.GetObject("notepad_opt1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

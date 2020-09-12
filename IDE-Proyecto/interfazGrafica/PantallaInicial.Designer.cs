@@ -134,6 +134,7 @@
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.Name = "PantallaInicial";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PantallaInicial";
             this.Load += new System.EventHandler(this.PantallaInicial_Load);
             this.panel1.ResumeLayout(false);

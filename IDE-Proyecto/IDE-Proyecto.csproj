@@ -101,5 +101,20 @@
   <ItemGroup>
     <None Include="Resources\notepad-3_opt.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_opt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder-3_opt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notepad_opt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notepad-3_opt1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\flexible_opt.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
