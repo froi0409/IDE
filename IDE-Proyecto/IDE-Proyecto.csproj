@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D3D1A870-693A-4389-92A5-733196254D9F}</ProjectGuid>
+    <ProjectGuid>{1CFC24B1-6957-42DD-83A0-E8D064907BA6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>IDE_Proyecto</RootNamespace>
     <AssemblyName>IDE-Proyecto</AssemblyName>
@@ -46,14 +46,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="interfazGrafica\IDE.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="interfazGrafica\IDE.Designer.cs">
+      <DependentUpon>IDE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="interfazGrafica\PantallaInicial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="interfazGrafica\PantallaInicial.Designer.cs">
+      <DependentUpon>PantallaInicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="interfazGrafica\IDE.resx">
+      <DependentUpon>IDE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="interfazGrafica\PantallaInicial.resx">
+      <DependentUpon>PantallaInicial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +74,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -75,6 +88,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_opt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder-3_opt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notepad_opt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notepad-3_opt.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

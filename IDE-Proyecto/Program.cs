@@ -6,8 +6,13 @@ using System.Windows.Forms;
 
 namespace IDE_Proyecto
 {
+    using interfazGrafica;
+
     static class Program
     {
+
+
+
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
@@ -16,7 +21,8 @@ namespace IDE_Proyecto
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new PantallaInicial());
+            
         }
     }
 }

@@ -1,0 +1,11 @@
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\bin\Debug\IDE-Proyecto.exe.config
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\bin\Debug\IDE-Proyecto.exe
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\bin\Debug\IDE-Proyecto.pdb
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE-Proyecto.csprojAssemblyReference.cache
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE_Proyecto.Properties.Resources.resources
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE-Proyecto.csproj.GenerateResource.cache
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE-Proyecto.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE-Proyecto.exe
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE-Proyecto.pdb
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE_Proyecto.interfazGrafica.PantallaInicial.resources
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE_Proyecto.interfazGrafica.IDE.resources

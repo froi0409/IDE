@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace IDE_Proyecto
+namespace IDE_Proyecto.interfazGrafica
 {
-    public partial class Form1 : Form
+    public partial class IDE : Form
     {
-        public Form1()
+        public IDE()
         {
             InitializeComponent();
+        }
+
+        private void IDE_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
