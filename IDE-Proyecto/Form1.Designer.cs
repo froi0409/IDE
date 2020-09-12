@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace IDE_Proyecto
 {
     partial class Form1
     {
