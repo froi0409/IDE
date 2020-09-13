@@ -42,12 +42,14 @@ namespace IDE_Proyecto.interfazGrafica
         public extern static int SendMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 
 
-
+        //Variables que utilizará la clase
 
         private int cantLineas = 1;
-        public IDE()
+        private String accion;
+        public IDE(String accion)
         {
             InitializeComponent();
+            this.accion = accion;
             txtNumeracion.Text = "1";
         }
 

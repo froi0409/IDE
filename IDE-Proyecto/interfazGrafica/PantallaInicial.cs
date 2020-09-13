@@ -34,8 +34,13 @@ namespace IDE_Proyecto.interfazGrafica
 
         private void button1_Click(object sender, EventArgs e)
         {
-            IDE ide = new IDE();
-            ide.Visible = true;
+            
+        }
+
+        private void btnAbrirA_Click(object sender, EventArgs e)
+        {
+            IDE pantalla = new IDE();
+            pantalla.Visible = true;
         }
     }
 }

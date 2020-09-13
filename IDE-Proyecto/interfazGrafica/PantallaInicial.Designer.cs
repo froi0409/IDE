@@ -30,10 +30,11 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAbrirA = new System.Windows.Forms.Button();
+            this.btnCrearA = new System.Windows.Forms.Button();
+            this.btnAbrirP = new System.Windows.Forms.Button();
+            this.btnCrearP = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,76 +53,81 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnAbrirA);
+            this.panel1.Controls.Add(this.btnCrearA);
+            this.panel1.Controls.Add(this.btnAbrirP);
+            this.panel1.Controls.Add(this.btnCrearP);
             this.panel1.Location = new System.Drawing.Point(12, 116);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(642, 310);
             this.panel1.TabIndex = 1;
             // 
-            // button4
+            // btnAbrirA
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.Control;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Image = global::IDE_Proyecto.Properties.Resources.notepad_3_opt;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(160, 186);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(339, 55);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Abrir Archivo";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnAbrirA.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAbrirA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbrirA.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirA.Image = global::IDE_Proyecto.Properties.Resources.notepad_3_opt;
+            this.btnAbrirA.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAbrirA.Location = new System.Drawing.Point(160, 186);
+            this.btnAbrirA.Name = "btnAbrirA";
+            this.btnAbrirA.Size = new System.Drawing.Size(339, 55);
+            this.btnAbrirA.TabIndex = 3;
+            this.btnAbrirA.Text = "Abrir Archivo";
+            this.btnAbrirA.UseVisualStyleBackColor = false;
+            this.btnAbrirA.Click += new System.EventHandler(this.btnAbrirA_Click);
             // 
-            // button3
+            // btnCrearA
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.Control;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Image = global::IDE_Proyecto.Properties.Resources.notepad_opt;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(160, 125);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(339, 55);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Crear Archivo";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnCrearA.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCrearA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCrearA.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearA.Image = global::IDE_Proyecto.Properties.Resources.notepad_opt;
+            this.btnCrearA.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCrearA.Location = new System.Drawing.Point(160, 125);
+            this.btnCrearA.Name = "btnCrearA";
+            this.btnCrearA.Size = new System.Drawing.Size(339, 55);
+            this.btnCrearA.TabIndex = 2;
+            this.btnCrearA.Text = "Crear Archivo";
+            this.btnCrearA.UseVisualStyleBackColor = false;
+            this.btnCrearA.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // btnAbrirP
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = global::IDE_Proyecto.Properties.Resources.folder_3_opt;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(160, 64);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(339, 55);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Abrir Proyecto";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnAbrirP.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAbrirP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbrirP.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbrirP.Image = global::IDE_Proyecto.Properties.Resources.folder_3_opt;
+            this.btnAbrirP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAbrirP.Location = new System.Drawing.Point(160, 64);
+            this.btnAbrirP.Name = "btnAbrirP";
+            this.btnAbrirP.Size = new System.Drawing.Size(339, 55);
+            this.btnAbrirP.TabIndex = 1;
+            this.btnAbrirP.Text = "Abrir Proyecto";
+            this.btnAbrirP.UseVisualStyleBackColor = false;
+            this.btnAbrirP.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // btnCrearP
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::IDE_Proyecto.Properties.Resources.folder_opt;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(160, 3);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(339, 55);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Crear Proyecto";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCrearP.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnCrearP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnCrearP.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnCrearP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCrearP.Font = new System.Drawing.Font("Microsoft YaHei", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrearP.Image = global::IDE_Proyecto.Properties.Resources.folder_opt;
+            this.btnCrearP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCrearP.Location = new System.Drawing.Point(160, 3);
+            this.btnCrearP.Name = "btnCrearP";
+            this.btnCrearP.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnCrearP.Size = new System.Drawing.Size(339, 55);
+            this.btnCrearP.TabIndex = 0;
+            this.btnCrearP.Text = "Crear Proyecto";
+            this.btnCrearP.UseVisualStyleBackColor = false;
+            this.btnCrearP.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.Filter = "Archivos de Código Fuente (*.gt)| *.gt";
             // 
             // PantallaInicial
             // 
@@ -147,9 +153,10 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnCrearP;
+        private System.Windows.Forms.Button btnAbrirA;
+        private System.Windows.Forms.Button btnCrearA;
+        private System.Windows.Forms.Button btnAbrirP;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

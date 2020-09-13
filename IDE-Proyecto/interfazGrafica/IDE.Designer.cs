@@ -48,6 +48,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblNombreProyecto = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lstArchivos = new System.Windows.Forms.ListBox();
@@ -55,7 +56,6 @@
             this.txtArea = new System.Windows.Forms.RichTextBox();
             this.txtNumeracion = new System.Windows.Forms.RichTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lblNombreProyecto = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -263,6 +263,15 @@
             this.panel2.Size = new System.Drawing.Size(1110, 30);
             this.panel2.TabIndex = 2;
             // 
+            // lblNombreProyecto
+            // 
+            this.lblNombreProyecto.AutoSize = true;
+            this.lblNombreProyecto.Location = new System.Drawing.Point(3, 6);
+            this.lblNombreProyecto.Name = "lblNombreProyecto";
+            this.lblNombreProyecto.Size = new System.Drawing.Size(118, 17);
+            this.lblNombreProyecto.TabIndex = 0;
+            this.lblNombreProyecto.Text = "Proyecto: Prueba";
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -352,15 +361,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1110, 156);
             this.panel3.TabIndex = 4;
-            // 
-            // lblNombreProyecto
-            // 
-            this.lblNombreProyecto.AutoSize = true;
-            this.lblNombreProyecto.Location = new System.Drawing.Point(3, 6);
-            this.lblNombreProyecto.Name = "lblNombreProyecto";
-            this.lblNombreProyecto.Size = new System.Drawing.Size(118, 17);
-            this.lblNombreProyecto.TabIndex = 0;
-            this.lblNombreProyecto.Text = "Proyecto: Prueba";
             // 
             // textBox1
             // 
