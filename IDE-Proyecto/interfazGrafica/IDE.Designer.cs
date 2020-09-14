@@ -389,6 +389,8 @@
             this.Name = "IDE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IDE";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IDE_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.IDE_FormClosed);
             this.Load += new System.EventHandler(this.IDE_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

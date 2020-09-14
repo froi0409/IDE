@@ -42,10 +42,11 @@ namespace IDE_Proyecto.interfazGrafica
         public extern static int SendMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 
 
-        //Variables que utilizará la clase
 
+        //Variables que utilizará la clase
         private int cantLineas = 1;
         private String accion;
+
         public IDE(String accion)
         {
             InitializeComponent();
@@ -93,6 +94,7 @@ namespace IDE_Proyecto.interfazGrafica
             
         }
 
+
         /// <summary>
         /// Sirve para desplazar el área de texto al mismo tiempo que a numeración
         /// </summary>
@@ -104,6 +106,30 @@ namespace IDE_Proyecto.interfazGrafica
             nPos <<= 16;
             uint wParam = (uint)ScrollBarCommands.SB_THUMBPOSITION | (uint)nPos;
             SendMessage(txtNumeracion.Handle, (int)Message.WM_VSCROLL, new IntPtr(wParam), new IntPtr(0));
+        }
+
+
+        /// <summary>
+        /// Método que nos sirve para definir el comportamiento del formulario
+        /// después de ser cerrado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void IDE_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit(); //Nos permite salir de la aplicación
+        }
+
+
+        /// <summary>
+        /// Método que nos sirve para definir el comportamiento del formulario
+        /// antes de ser cerrado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void IDE_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
         }
     }
 }

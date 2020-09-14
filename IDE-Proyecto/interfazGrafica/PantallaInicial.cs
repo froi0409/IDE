@@ -24,23 +24,29 @@ namespace IDE_Proyecto.interfazGrafica
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            CrearIDE("AbrirP");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            CrearIDE("CrearA");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            CrearIDE("CrearP");
         }
 
         private void btnAbrirA_Click(object sender, EventArgs e)
         {
-            IDE pantalla = new IDE();
-            pantalla.Visible = true;
+            CrearIDE("AbrirA");
+        }
+
+        private void CrearIDE(String tipo)
+        {
+            IDE ide = new IDE(tipo);
+            ide.Visible = true;
+            this.Visible = false;
         }
     }
 }
