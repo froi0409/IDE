@@ -29,12 +29,16 @@ namespace IDE_Proyecto.interfazGrafica
 
         private void button3_Click(object sender, EventArgs e)
         {
-            
+            CreacionDeProyecto cdp = new CreacionDeProyecto("Archivo");
+            cdp.Visible = true;
+            this.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            CreacionDeProyecto cdp = new CreacionDeProyecto("Proyecto");
+            cdp.Visible = true;
+            this.Visible = false;
         }
 
         private void btnAbrirA_Click(object sender, EventArgs e)
