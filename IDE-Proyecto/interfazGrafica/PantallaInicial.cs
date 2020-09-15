@@ -15,6 +15,9 @@ namespace IDE_Proyecto.interfazGrafica
         public PantallaInicial()
         {
             InitializeComponent();
+            openFileDialog1.Filter = "Archivos de Código Fuente (*.gt)| *.txt";
+            openFileDialog1.ShowDialog();
+            Console.WriteLine(openFileDialog1.FileName);
         }
 
         private void PantallaInicial_Load(object sender, EventArgs e)
@@ -44,7 +47,7 @@ namespace IDE_Proyecto.interfazGrafica
 
         private void CrearIDE(String tipo)
         {
-            IDE ide = new IDE(tipo);
+            IDE ide = new IDE(tipo, "");
             ide.Visible = true;
             this.Visible = false;
         }

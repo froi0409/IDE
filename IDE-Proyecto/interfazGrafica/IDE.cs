@@ -12,6 +12,8 @@ using System.Runtime.InteropServices;
 namespace IDE_Proyecto.interfazGrafica
 {
 
+    using archivos;
+
     //Todos los enum sirven para la sincronización entre los richTextBox
     public enum ScrollBarType : uint
     {
@@ -45,13 +47,49 @@ namespace IDE_Proyecto.interfazGrafica
 
         //Variables que utilizará la clase
         private int cantLineas = 1;
-        private String accion;
+        private ManipulacionArchivo arch;
+        private String accion, ruta = "";
 
-        public IDE(String accion)
+        public IDE(String accion, String ruta)
         {
             InitializeComponent();
             this.accion = accion;
+            this.ruta = ruta;
             txtNumeracion.Text = "1";
+            InicializacionIDE();
+        }
+
+        /// <summary>
+        /// Método que nos sirve para inicializar el IDE
+        /// </summary>
+        private void InicializacionIDE()
+        {
+            switch (accion)
+            {
+
+                case "AbrirA":
+                    arch = new FileCodigoFuente();
+                    arch.Abrir(ruta, txtArea, lstArchivos);
+                    break;
+                case "CrearA":
+                    arch = new FileCodigoFuente();
+                    arch.Crear(ruta, txtArea, lstArchivos);
+                    break;
+                case "AbrirP":
+                    arch = new FileProyecto();
+                    arch.Abrir(ruta, txtArea, lstArchivos);
+                    break;
+                case "CrearP":
+                    arch = new FileProyecto();
+                    arch.Crear(ruta, txtArea, lstArchivos);
+                    break;
+                default:
+                    //Este default se coloca únicamente por prevención, ya que debido a la programación hecha en 
+                    //PantallaInicial.cs, no se debería ejecutar esta opción
+                    MessageBox.Show("Ha ocurrido un error al iniciar el IDE");
+                    Application.Exit();
+                    break;
+            }
         }
 
         private void IDE_Load(object sender, EventArgs e)
