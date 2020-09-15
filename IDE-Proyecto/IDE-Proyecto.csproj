@@ -49,6 +49,12 @@
     <Compile Include="archivos\FileCodigoFuente.cs" />
     <Compile Include="archivos\FileProyecto.cs" />
     <Compile Include="archivos\ManipulacionArchivo.cs" />
+    <Compile Include="interfazGrafica\CreacionDeProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="interfazGrafica\CreacionDeProyecto.Designer.cs">
+      <DependentUpon>CreacionDeProyecto.cs</DependentUpon>
+    </Compile>
     <Compile Include="interfazGrafica\IDE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,6 +69,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="interfazGrafica\CreacionDeProyecto.resx">
+      <DependentUpon>CreacionDeProyecto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="interfazGrafica\IDE.resx">
       <DependentUpon>IDE.cs</DependentUpon>
     </EmbeddedResource>
