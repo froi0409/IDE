@@ -43,26 +43,27 @@ namespace IDE_Proyecto.interfazGrafica
         [DllImport("User32.dll")]
         public extern static int SendMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 
-
-
         //Variables que utilizará la clase
         private int cantLineas = 1;
-        private ManipulacionArchivo arch;
-        private String accion;
+        private String nombre, tipoDeCreacion;
+        private FileProyecto proyecto;
 
-        public IDE()
+        public IDE(FileProyecto proyecto, String nombre, String tipoDeCreacion)
         {
             InitializeComponent();
+            this.nombre = nombre;
+            this.tipoDeCreacion = tipoDeCreacion;
+            this.proyecto = proyecto;
             txtNumeracion.Text = "1";
+            LlenadoDeArchivos();
         }
 
         /// <summary>
         /// Método que nos sirve para inicializar el IDE
         /// </summary>
-        
         private void IDE_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -100,6 +101,13 @@ namespace IDE_Proyecto.interfazGrafica
             
         }
 
+        private void LlenadoDeArchivos()
+        {
+            foreach (FileCodigoFuente element in proyecto.ListaCodigoFuente)
+            {
+                lstArchivos.Items.Add(element.Nombre);
+            }
+        }
 
         /// <summary>
         /// Sirve para desplazar el área de texto al mismo tiempo que a numeración

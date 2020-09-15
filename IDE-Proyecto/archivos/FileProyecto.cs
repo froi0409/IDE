@@ -8,10 +8,15 @@ using System.Windows.Forms;
 
 namespace IDE_Proyecto.archivos
 {
-    class FileProyecto : ManipulacionArchivo
+    public class FileProyecto : ManipulacionArchivo
     {
 
         private ArrayList codigoFuente;
+
+        public FileProyecto()
+        {
+            codigoFuente = new ArrayList();
+        }
 
         public override void Abrir(RichTextBox txtArea, ListBox lstArchivos)
         {
@@ -28,9 +33,12 @@ namespace IDE_Proyecto.archivos
 
         }
 
-        public ArrayList GetCodigoFuente()
+        public ArrayList ListaCodigoFuente
         {
-            return codigoFuente;
+            get
+            {
+                return codigoFuente;
+            }
         }
     }
 }

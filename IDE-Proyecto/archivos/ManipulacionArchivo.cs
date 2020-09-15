@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace IDE_Proyecto.archivos
 {
-    abstract class ManipulacionArchivo
+    public abstract class ManipulacionArchivo
     {
 
         public abstract void Abrir(RichTextBox txtArea, ListBox lstArchivos);
