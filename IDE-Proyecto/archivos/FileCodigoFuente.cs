@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace IDE_Proyecto.archivos
 {
@@ -11,12 +12,11 @@ namespace IDE_Proyecto.archivos
     public class FileCodigoFuente : ManipulacionArchivo
     {
 
-        private RichTextBox contenido;
+        private String contenido;
         private String nombre;
 
         public FileCodigoFuente(String nombre)
         {
-            contenido = new RichTextBox();
             this.nombre = nombre;
         }
 
@@ -30,16 +30,31 @@ namespace IDE_Proyecto.archivos
             
         }
 
+        /// <summary>
+        /// Método que nos sirve para sobreescribir un archivo
+        /// </summary>
+        /// <param name="ruta">Ruta COMPLETA del archivo a sobreescribir</param>
         public override void Guardar(String ruta)
         {
-            
+
+            using (StreamWriter writer = new StreamWriter(ruta))
+            {
+                writer.Write(contenido); //Esta linea escribe en el archivo cada linea de texto
+                writer.Close();
+                MessageBox.Show("Cambios realizazos\n\n" + contenido);
+            }
+
         }
 
-        public RichTextBox Contenido
+        public String Contenido
         {
             get
             {
                 return contenido;
+            }
+            set
+            {
+                contenido = value;
             }
         }
 

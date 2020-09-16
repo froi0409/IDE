@@ -10,3 +10,4 @@ C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de P
 C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE_Proyecto.interfazGrafica.PantallaInicial.resources
 C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE_Proyecto.interfazGrafica.IDE.resources
 C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE_Proyecto.interfazGrafica.CreacionDeProyecto.resources
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE_Proyecto.interfazGrafica.NuevoArchivo.resources

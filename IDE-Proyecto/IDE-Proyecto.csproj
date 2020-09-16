@@ -61,6 +61,12 @@
     <Compile Include="interfazGrafica\IDE.Designer.cs">
       <DependentUpon>IDE.cs</DependentUpon>
     </Compile>
+    <Compile Include="interfazGrafica\NuevoArchivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="interfazGrafica\NuevoArchivo.Designer.cs">
+      <DependentUpon>NuevoArchivo.cs</DependentUpon>
+    </Compile>
     <Compile Include="interfazGrafica\PantallaInicial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="interfazGrafica\IDE.resx">
       <DependentUpon>IDE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="interfazGrafica\NuevoArchivo.resx">
+      <DependentUpon>NuevoArchivo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="interfazGrafica\PantallaInicial.resx">
       <DependentUpon>PantallaInicial.cs</DependentUpon>
@@ -130,6 +139,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="analizadores\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar-el-archivo %282%29_opt.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

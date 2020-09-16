@@ -16,6 +16,7 @@ namespace IDE_Proyecto.interfazGrafica
     {
         private String tipoDeCreacion;
         private PantallaInicial pantallaInicial;
+        private FileProyecto proyecto;
 
         public CreacionDeProyecto(String tipoDeCreacion, PantallaInicial pantallaInicial)
         {
@@ -84,32 +85,41 @@ namespace IDE_Proyecto.interfazGrafica
                 }
                 else
                 {
-
-                    //Condición que nos permite crear un archivo o un proyecto, según lo haya indicado el usuario
-                    if (tipoDeCreacion.Equals("Proyecto"))
+                    if (!Directory.Exists(txtRuta.Text + @"\" + txtNombre.Text)) //Condicion que nos ayuda a comprobar si la carpeta ya existe
                     {
-
-                        FileProyecto proyecto = new FileProyecto();
-                        Directory.CreateDirectory(txtRuta.Text + @"\" + txtNombre.Text); //Crea la carpeta del proyecto
-
-                        if(checkBox1.Checked == true)//Condición que crea un archivo de código fuente, únicamente si el checkbox está chequeado
+                        //Condición que nos permite crear un archivo o un proyecto, según lo haya indicado el usuario
+                        if (tipoDeCreacion.Equals("Proyecto"))
                         {
-                            proyecto.ListaCodigoFuente.Add(new FileCodigoFuente("Inicio"));
+
+                            proyecto = new FileProyecto();
+                            String rutaProyecto = txtRuta.Text + @"\" + txtNombre.Text;
+                            Directory.CreateDirectory(rutaProyecto); //Crea la carpeta del proyecto
+
+                            if (checkBox1.Checked == true)//Condición que crea un archivo de código fuente, únicamente si el checkbox está chequeado
+                            {
+                                proyecto.ListaCodigoFuente.Add(new FileCodigoFuente("Inicio.gt"));
+                                StreamWriter sr = new StreamWriter(rutaProyecto + @"\" + "Inicio.gt");
+                                sr.Close();
+                            }
+
+                            IDE ide = new IDE(proyecto, txtNombre.Text, tipoDeCreacion, rutaProyecto); //CREACIÓN DEL IDE
+                            ide.Visible = true;
+                            this.Visible = false;
+
                         }
+                        else if (tipoDeCreacion.Equals("Archivo"))
+                        {
 
-                        IDE ide = new IDE(proyecto, txtNombre.Text, tipoDeCreacion); //CREACIÓN DEL IDE
-                        ide.Visible = true;
-                        this.Visible = false;
-
+                        }
+                        else //Esta condición no debería ejecutarse nunca, a menos que el proramador no haya enviado bien un parámetro al constructor de la clase
+                        {
+                            MessageBox.Show("Ha ocurrido un error");
+                            Application.Exit();
+                        }
                     }
-                    else if (tipoDeCreacion.Equals("Archivo"))
+                    else
                     {
-
-                    }
-                    else //Esta condición no debería ejecutarse nunca, a menos que el proramador no haya enviado bien un parámetro al constructor de la clase
-                    {
-                        MessageBox.Show("Ha ocurrido un error");
-                        Application.Exit();
+                        MessageBox.Show("El proyecto ya existe");
                     }
 
                 }

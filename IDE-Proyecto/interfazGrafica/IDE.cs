@@ -44,16 +44,18 @@ namespace IDE_Proyecto.interfazGrafica
         public extern static int SendMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 
         //Variables que utilizará la clase
-        private int cantLineas = 1;
-        private String nombre, tipoDeCreacion;
+        private int cantLineas = 1, selectedFile = 0;
+        private String nombre, tipoDeCreacion, carpetaArchivos;
         private FileProyecto proyecto;
+        private List<FileProyecto> archivos = new List<FileProyecto>(); //* Lista pensada para tener los archivos sin las modificaciones que se realicen en el IDE */
 
-        public IDE(FileProyecto proyecto, String nombre, String tipoDeCreacion)
+        public IDE(FileProyecto proyecto, String nombre, String tipoDeCreacion, String carpetaArchivos)
         {
             InitializeComponent();
             this.nombre = nombre;
             this.tipoDeCreacion = tipoDeCreacion;
             this.proyecto = proyecto;
+            this.carpetaArchivos = carpetaArchivos;
             txtNumeracion.Text = "1";
             LlenadoDeArchivos();
         }
@@ -63,7 +65,7 @@ namespace IDE_Proyecto.interfazGrafica
         /// </summary>
         private void IDE_Load(object sender, EventArgs e)
         {
-            
+            lstArchivos.SelectedIndex = 0;
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -73,7 +75,16 @@ namespace IDE_Proyecto.interfazGrafica
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            actualizacionDeRTB();
+        }
+
+        public void actualizacionDeRTB()
+        {
+
+            proyecto.ListaCodigoFuente[selectedFile].Contenido = txtArea.Text; //Le asignamos el texto correspondiente al espacio de texto de cada archivo
+            selectedFile = lstArchivos.SelectedIndex;
+            txtArea.Text = proyecto.ListaCodigoFuente[selectedFile].Contenido; //Le asignamos el texto del archivo seleccionado a txtArea
+
         }
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
@@ -92,21 +103,42 @@ namespace IDE_Proyecto.interfazGrafica
                 txtArea_VScroll(sender, e);
             }
 
-
-
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
+            actualizacionDeRTB();
+            for(int i = 0; i < proyecto.ListaCodigoFuente.Count; i++)
+            {
+                lstArchivos.SelectedIndex = i;
+                proyecto.ListaCodigoFuente[i].Guardar(carpetaArchivos + @"\" + lstArchivos.SelectedItem.ToString());
+            }
         }
 
-        private void LlenadoDeArchivos()
+        public void LlenadoDeArchivos()
         {
+            lstArchivos.Items.Clear();
             foreach (FileCodigoFuente element in proyecto.ListaCodigoFuente)
             {
                 lstArchivos.Items.Add(element.Nombre);
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            actualizacionDeRTB();
+            proyecto.ListaCodigoFuente[selectedFile].Guardar(carpetaArchivos + @"\" + lstArchivos.SelectedItem.ToString());
+        }
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button5_Click(sender, e);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            NuevoArchivo na = new NuevoArchivo(this, proyecto, carpetaArchivos);
+            na.Visible = true;
         }
 
         /// <summary>

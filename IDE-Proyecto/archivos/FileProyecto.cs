@@ -5,17 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using System.Windows.Forms;
+using System.IO;
 
 namespace IDE_Proyecto.archivos
 {
     public class FileProyecto : ManipulacionArchivo
     {
 
-        private ArrayList codigoFuente;
-
+        private List<FileCodigoFuente> codigoFuente;
+        
         public FileProyecto()
         {
-            codigoFuente = new ArrayList();
+            codigoFuente = new List<FileCodigoFuente>();
         }
 
         public override void Abrir(RichTextBox txtArea, ListBox lstArchivos)
@@ -33,7 +34,7 @@ namespace IDE_Proyecto.archivos
 
         }
 
-        public ArrayList ListaCodigoFuente
+        public List<FileCodigoFuente> ListaCodigoFuente
         {
             get
             {
