@@ -49,7 +49,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPosicion = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -93,7 +93,7 @@
             this.guardarToolStripMenuItem,
             this.guardarComoToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 26);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // nuevoToolStripMenuItem
@@ -102,7 +102,7 @@
             this.proyectoToolStripMenuItem,
             this.archivoToolStripMenuItem1});
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             // 
             // abrirToolStripMenuItem
@@ -111,13 +111,13 @@
             this.proyectoToolStripMenuItem1,
             this.archivoToolStripMenuItem2});
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.abrirToolStripMenuItem.Text = "Abrir";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
             // 
             // editarToolStripMenuItem
             // 
@@ -126,7 +126,7 @@
             this.copiarToolStripMenuItem,
             this.pegarToolStripMenuItem});
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(62, 26);
             this.editarToolStripMenuItem.Text = "Editar";
             // 
             // cortarToolStripMenuItem
@@ -169,7 +169,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.lblPosicion);
             this.panel2.Controls.Add(this.lblNombreProyecto);
             this.panel2.Location = new System.Drawing.Point(0, 64);
             this.panel2.Name = "panel2";
@@ -250,7 +250,9 @@
             this.txtArea.TabIndex = 1;
             this.txtArea.Text = "";
             this.txtArea.VScroll += new System.EventHandler(this.txtArea_VScroll);
+            this.txtArea.Click += new System.EventHandler(this.txtArea_Click);
             this.txtArea.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
+            this.txtArea.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtArea_KeyUp);
             // 
             // txtNumeracion
             // 
@@ -264,6 +266,7 @@
             this.txtNumeracion.Size = new System.Drawing.Size(48, 436);
             this.txtNumeracion.TabIndex = 0;
             this.txtNumeracion.Text = "";
+            this.txtNumeracion.TextChanged += new System.EventHandler(this.txtNumeracion_TextChanged);
             // 
             // panel3
             // 
@@ -298,15 +301,15 @@
             this.button7.TabIndex = 6;
             this.button7.UseVisualStyleBackColor = false;
             // 
-            // label1
+            // lblPosicion
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(991, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Posición: (0 , 0)";
+            this.lblPosicion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPosicion.AutoSize = true;
+            this.lblPosicion.Location = new System.Drawing.Point(991, 6);
+            this.lblPosicion.Name = "lblPosicion";
+            this.lblPosicion.Size = new System.Drawing.Size(107, 17);
+            this.lblPosicion.TabIndex = 1;
+            this.lblPosicion.Text = "Posición: (0 , 0)";
             // 
             // button6
             // 
@@ -420,7 +423,7 @@
             // 
             this.guardarToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.flexible_opt;
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
@@ -428,7 +431,7 @@
             // 
             this.guardarComoToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.guardar_el_archivo__2__opt;
             this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.guardarComoToolStripMenuItem.Text = "Guardar Todo";
             this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.guardarComoToolStripMenuItem_Click);
             // 
@@ -500,6 +503,6 @@
         private System.Windows.Forms.ToolStripMenuItem copiarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pegarToolStripMenuItem;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblPosicion;
     }
 }

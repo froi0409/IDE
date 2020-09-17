@@ -96,6 +96,8 @@ namespace IDE_Proyecto.interfazGrafica
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
 
+            coordenadas();
+
             //Condicion que nos sirve para verificar si hay alguna linea adicional
             int cantLineasRT = txtArea.Lines.Length;
             if (cantLineasRT != cantLineas)
@@ -108,6 +110,7 @@ namespace IDE_Proyecto.interfazGrafica
                 }
                 txtArea_VScroll(sender, e);
             }
+
 
         }
 
@@ -152,6 +155,11 @@ namespace IDE_Proyecto.interfazGrafica
             button6_Click(sender, e);
         }
 
+        private void txtNumeracion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         /// <summary>
         /// Sirve para desplazar el área de texto al mismo tiempo que a numeración
         /// </summary>
@@ -163,6 +171,46 @@ namespace IDE_Proyecto.interfazGrafica
             nPos <<= 16;
             uint wParam = (uint)ScrollBarCommands.SB_THUMBPOSITION | (uint)nPos;
             SendMessage(txtNumeracion.Handle, (int)Message.WM_VSCROLL, new IntPtr(wParam), new IntPtr(0));
+        }
+
+        private void txtArea_Click(object sender, EventArgs e)
+        {
+            coordenadas();
+        }
+
+        private void txtArea_CursorChanged(object sender, EventArgs e)
+        {
+            coordenadas();
+        }
+
+        private void txtArea_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            coordenadas();
+        }
+
+        private void txtArea_KeyUp(object sender, KeyEventArgs e)
+        {
+            coordenadas();
+        }
+
+        private void txtArea_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            coordenadas();
+        }
+
+        private void txtArea_Validated(object sender, EventArgs e)
+        {
+            coordenadas();
+        }
+
+        private void txtArea_Validating(object sender, CancelEventArgs e)
+        {
+            coordenadas();
+        }
+
+        private void txtArea_CursorChanged_1(object sender, EventArgs e)
+        {
+            coordenadas();
         }
 
 
@@ -199,6 +247,19 @@ namespace IDE_Proyecto.interfazGrafica
                     break;
                 }
             }
+        }
+
+        private void coordenadas()
+        {
+            //Las siguientes lineas nos sirven para definir la posición del cursor
+            int index = txtArea.SelectionStart;
+            int line = txtArea.GetLineFromCharIndex(index);
+            
+
+            int firstChar = txtArea.GetFirstCharIndexFromLine(line);
+            int column = index - firstChar;
+
+            lblPosicion.Text = "Posición: (" + (line+1) + "," + (column+1) + ")";
         }
     }
 }
