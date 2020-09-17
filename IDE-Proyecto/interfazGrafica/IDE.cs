@@ -69,10 +69,6 @@ namespace IDE_Proyecto.interfazGrafica
             lstArchivos.SelectedIndex = 0;
         }
 
-        private void inicializacionRTB()
-        {
-            
-        }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
@@ -178,37 +174,7 @@ namespace IDE_Proyecto.interfazGrafica
             coordenadas();
         }
 
-        private void txtArea_CursorChanged(object sender, EventArgs e)
-        {
-            coordenadas();
-        }
-
-        private void txtArea_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            coordenadas();
-        }
-
         private void txtArea_KeyUp(object sender, KeyEventArgs e)
-        {
-            coordenadas();
-        }
-
-        private void txtArea_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            coordenadas();
-        }
-
-        private void txtArea_Validated(object sender, EventArgs e)
-        {
-            coordenadas();
-        }
-
-        private void txtArea_Validating(object sender, CancelEventArgs e)
-        {
-            coordenadas();
-        }
-
-        private void txtArea_CursorChanged_1(object sender, EventArgs e)
         {
             coordenadas();
         }
@@ -234,6 +200,7 @@ namespace IDE_Proyecto.interfazGrafica
         /// <param name="e"></param>
         private void IDE_FormClosing(object sender, FormClosingEventArgs e)
         {
+            actualizacionDeRTB();
             foreach(FileCodigoFuente element in proyecto.ListaCodigoFuente)
             {
                 if(!element.Comprobacion(carpetaArchivos + @"\" + element.Nombre))
