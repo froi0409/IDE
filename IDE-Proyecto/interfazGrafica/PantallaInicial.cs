@@ -24,7 +24,9 @@ namespace IDE_Proyecto.interfazGrafica
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            AperturaArchivo aa = new AperturaArchivo(this);
+            aa.Visible = true;
+            this.Visible = false;
         }
 
         private void button3_Click(object sender, EventArgs e)

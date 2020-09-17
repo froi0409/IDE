@@ -19,9 +19,9 @@ namespace IDE_Proyecto.archivos
             codigoFuente = new List<FileCodigoFuente>();
         }
 
-        public override void Abrir(RichTextBox txtArea, ListBox lstArchivos)
+        public override void Abrir(String ruta)
         {
-
+            
         }
 
         public override void Crear(RichTextBox txtArea, ListBox lstArchivos)

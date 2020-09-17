@@ -33,7 +33,6 @@
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.guardarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cortarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copiarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +49,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -61,7 +61,7 @@
             this.proyectoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.archivoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
+            this.guardarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -102,7 +102,7 @@
             this.proyectoToolStripMenuItem,
             this.archivoToolStripMenuItem1});
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             // 
             // abrirToolStripMenuItem
@@ -111,20 +111,13 @@
             this.proyectoToolStripMenuItem1,
             this.archivoToolStripMenuItem2});
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.abrirToolStripMenuItem.Text = "Abrir";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
-            // 
-            // guardarComoToolStripMenuItem
-            // 
-            this.guardarComoToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.guardar_el_archivo__2__opt;
-            this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.guardarComoToolStripMenuItem.Text = "Guardar Todo";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
             // 
             // editarToolStripMenuItem
             // 
@@ -133,7 +126,7 @@
             this.copiarToolStripMenuItem,
             this.pegarToolStripMenuItem});
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(62, 26);
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.editarToolStripMenuItem.Text = "Editar";
             // 
             // cortarToolStripMenuItem
@@ -305,6 +298,16 @@
             this.button7.TabIndex = 6;
             this.button7.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(991, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(107, 17);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Posición: (0 , 0)";
+            // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -421,15 +424,13 @@
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
-            // label1
+            // guardarComoToolStripMenuItem
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(991, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Posición: (0 , 0)";
+            this.guardarComoToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.guardar_el_archivo__2__opt;
+            this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.guardarComoToolStripMenuItem.Text = "Guardar Todo";
+            this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.guardarComoToolStripMenuItem_Click);
             // 
             // IDE
             // 

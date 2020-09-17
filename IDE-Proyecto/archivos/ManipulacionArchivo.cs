@@ -10,7 +10,7 @@ namespace IDE_Proyecto.archivos
     public abstract class ManipulacionArchivo
     {
 
-        public abstract void Abrir(RichTextBox txtArea, ListBox lstArchivos);
+        public abstract void Abrir(String ruta);
         public abstract void Crear(RichTextBox txtArea, ListBox lstArchivos);
         public abstract void Guardar(String ruta);
 

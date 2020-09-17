@@ -65,7 +65,13 @@ namespace IDE_Proyecto.interfazGrafica
         /// </summary>
         private void IDE_Load(object sender, EventArgs e)
         {
+            txtArea.Text = proyecto.ListaCodigoFuente[0].Contenido;
             lstArchivos.SelectedIndex = 0;
+        }
+
+        private void inicializacionRTB()
+        {
+            
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -141,6 +147,11 @@ namespace IDE_Proyecto.interfazGrafica
             na.Visible = true;
         }
 
+        private void guardarComoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            button6_Click(sender, e);
+        }
+
         /// <summary>
         /// Sirve para desplazar el área de texto al mismo tiempo que a numeración
         /// </summary>
@@ -175,7 +186,19 @@ namespace IDE_Proyecto.interfazGrafica
         /// <param name="e"></param>
         private void IDE_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+            foreach(FileCodigoFuente element in proyecto.ListaCodigoFuente)
+            {
+                if(!element.Comprobacion(carpetaArchivos + @"\" + element.Nombre))
+                {
+                    DialogResult dialog = MessageBox.Show("Se han detectado cambios sin guardar, ¿Desea guardar cambios?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialog == DialogResult.Yes)
+                    {
+                        button6_Click(sender, e);
+
+                    }
+                    break;
+                }
+            }
         }
     }
 }

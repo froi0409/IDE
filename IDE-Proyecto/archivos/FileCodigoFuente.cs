@@ -20,9 +20,12 @@ namespace IDE_Proyecto.archivos
             this.nombre = nombre;
         }
 
-        public override void Abrir(RichTextBox txtArea, ListBox lstArchivos)
+        public override void Abrir(String ruta)
         {
-            
+            StreamReader sr = new StreamReader(ruta);
+            Contenido = sr.ReadToEnd();
+            sr.Close();
+
         }
 
         public override void Crear(RichTextBox txtArea, ListBox lstArchivos) 
@@ -41,7 +44,39 @@ namespace IDE_Proyecto.archivos
             {
                 writer.Write(contenido); //Esta linea escribe en el archivo cada linea de texto
                 writer.Close();
-                MessageBox.Show("Cambios realizazos\n\n" + contenido);
+            }
+
+        }
+
+        /// <summary>
+        /// Método encargado de comprobar si el contenido de este objeto, en comparación al archivo original, ha cambiado
+        /// Este método normalmente debe ejecutarse al cerrar el ide
+        /// </summary>
+        /// <param name="ruta"></param>
+        public bool Comprobacion(String ruta)
+        {
+
+            try
+            {
+
+                StreamReader sr = new StreamReader(ruta);
+                if (contenido.Equals(sr.ReadToEnd()))
+                {
+                    sr.Close();
+                    return true;
+                }
+                else
+                {
+                    sr.Close();
+                    return false;
+                }
+                
+            }
+            catch(IOException e)
+            {
+                MessageBox.Show("Ha ocurrido un problema a la hora de leer el archivo\n" +
+                    "favor de verificar que el archivo no esté corrupto");
+                return false;
             }
 
         }

@@ -49,5 +49,10 @@ namespace IDE_Proyecto.interfazGrafica
                 MessageBox.Show("El nombre del archivo es muy corto");
             }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
     }
 }
