@@ -46,11 +46,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="archivos\FileCodigoFuente.cs" />
+    <Compile Include="archivos\FileProyecto.cs" />
+    <Compile Include="archivos\ManipulacionArchivo.cs" />
+    <Compile Include="interfazGrafica\AperturaArchivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="interfazGrafica\AperturaArchivo.Designer.cs">
+      <DependentUpon>AperturaArchivo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="interfazGrafica\CreacionDeProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="interfazGrafica\CreacionDeProyecto.Designer.cs">
+      <DependentUpon>CreacionDeProyecto.cs</DependentUpon>
+    </Compile>
     <Compile Include="interfazGrafica\IDE.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="interfazGrafica\IDE.Designer.cs">
       <DependentUpon>IDE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="interfazGrafica\NuevoArchivo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="interfazGrafica\NuevoArchivo.Designer.cs">
+      <DependentUpon>NuevoArchivo.cs</DependentUpon>
     </Compile>
     <Compile Include="interfazGrafica\PantallaInicial.cs">
       <SubType>Form</SubType>
@@ -60,8 +81,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="interfazGrafica\AperturaArchivo.resx">
+      <DependentUpon>AperturaArchivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="interfazGrafica\CreacionDeProyecto.resx">
+      <DependentUpon>CreacionDeProyecto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="interfazGrafica\IDE.resx">
       <DependentUpon>IDE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="interfazGrafica\NuevoArchivo.resx">
+      <DependentUpon>NuevoArchivo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="interfazGrafica\PantallaInicial.resx">
       <DependentUpon>PantallaInicial.cs</DependentUpon>
@@ -115,6 +145,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\flexible_opt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="analizadores\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\guardar-el-archivo %282%29_opt.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

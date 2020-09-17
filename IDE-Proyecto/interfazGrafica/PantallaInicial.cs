@@ -24,18 +24,33 @@ namespace IDE_Proyecto.interfazGrafica
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            AperturaArchivo aa = new AperturaArchivo(this);
+            aa.Visible = true;
+            this.Visible = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            CreacionDeProyecto cdp = new CreacionDeProyecto("Archivo", this);
+            cdp.Visible = true;
+            this.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            IDE ide = new IDE();
-            ide.Visible = true;
+            CreacionDeProyecto cdp = new CreacionDeProyecto("Proyecto", this);
+            cdp.Visible = true;
+            this.Visible = false;
+        }
+
+        private void btnAbrirA_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void CrearIDE(String tipo)
+        {
+            
         }
     }
 }

@@ -40,7 +40,11 @@
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cortarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copiarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pegarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -48,6 +52,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblPosicion = new System.Windows.Forms.Label();
+            this.lblNombreProyecto = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lstArchivos = new System.Windows.Forms.ListBox();
@@ -55,7 +61,6 @@
             this.txtArea = new System.Windows.Forms.RichTextBox();
             this.txtNumeracion = new System.Windows.Forms.RichTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lblNombreProyecto = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -144,27 +149,54 @@
             // 
             // guardarToolStripMenuItem
             // 
+            this.guardarToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.flexible_opt;
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
             this.guardarToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
             // guardarComoToolStripMenuItem
             // 
+            this.guardarComoToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.guardar_el_archivo__2__opt;
             this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
             this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.guardarComoToolStripMenuItem.Text = "Guardar Todo";
+            this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.guardarComoToolStripMenuItem_Click);
             // 
             // editarToolStripMenuItem
             // 
+            this.editarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cortarToolStripMenuItem,
+            this.copiarToolStripMenuItem,
+            this.pegarToolStripMenuItem});
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
             this.editarToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.editarToolStripMenuItem.Text = "Editar";
+            // 
+            // cortarToolStripMenuItem
+            // 
+            this.cortarToolStripMenuItem.Name = "cortarToolStripMenuItem";
+            this.cortarToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.cortarToolStripMenuItem.Text = "Cortar";
+            // 
+            // copiarToolStripMenuItem
+            // 
+            this.copiarToolStripMenuItem.Name = "copiarToolStripMenuItem";
+            this.copiarToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.copiarToolStripMenuItem.Text = "Copiar";
+            // 
+            // pegarToolStripMenuItem
+            // 
+            this.pegarToolStripMenuItem.Name = "pegarToolStripMenuItem";
+            this.pegarToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
+            this.pegarToolStripMenuItem.Text = "Pegar";
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
@@ -176,9 +208,22 @@
             this.panel1.Size = new System.Drawing.Size(1110, 30);
             this.panel1.TabIndex = 1;
             // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Location = new System.Drawing.Point(219, 0);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(30, 30);
+            this.button7.TabIndex = 6;
+            this.button7.UseVisualStyleBackColor = false;
+            // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button6.BackgroundImage = global::IDE_Proyecto.Properties.Resources.guardar_el_archivo__2__opt;
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Location = new System.Drawing.Point(183, 0);
@@ -200,6 +245,7 @@
             this.button5.Size = new System.Drawing.Size(30, 30);
             this.button5.TabIndex = 4;
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -226,6 +272,7 @@
             this.button3.Size = new System.Drawing.Size(30, 30);
             this.button3.TabIndex = 2;
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -257,11 +304,32 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel2.Controls.Add(this.lblPosicion);
             this.panel2.Controls.Add(this.lblNombreProyecto);
             this.panel2.Location = new System.Drawing.Point(0, 64);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1110, 30);
             this.panel2.TabIndex = 2;
+            // 
+            // lblPosicion
+            // 
+            this.lblPosicion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPosicion.AutoSize = true;
+            this.lblPosicion.Location = new System.Drawing.Point(991, 6);
+            this.lblPosicion.Name = "lblPosicion";
+            this.lblPosicion.Size = new System.Drawing.Size(107, 17);
+            this.lblPosicion.TabIndex = 1;
+            this.lblPosicion.Text = "Posición: (0 , 0)";
+            this.lblPosicion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblNombreProyecto
+            // 
+            this.lblNombreProyecto.AutoSize = true;
+            this.lblNombreProyecto.Location = new System.Drawing.Point(12, 6);
+            this.lblNombreProyecto.Name = "lblNombreProyecto";
+            this.lblNombreProyecto.Size = new System.Drawing.Size(118, 17);
+            this.lblNombreProyecto.TabIndex = 0;
+            this.lblNombreProyecto.Text = "Proyecto: Prueba";
             // 
             // tableLayoutPanel1
             // 
@@ -328,7 +396,9 @@
             this.txtArea.TabIndex = 1;
             this.txtArea.Text = "";
             this.txtArea.VScroll += new System.EventHandler(this.txtArea_VScroll);
+            this.txtArea.Click += new System.EventHandler(this.txtArea_Click);
             this.txtArea.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
+            this.txtArea.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtArea_KeyUp);
             // 
             // txtNumeracion
             // 
@@ -342,6 +412,7 @@
             this.txtNumeracion.Size = new System.Drawing.Size(48, 436);
             this.txtNumeracion.TabIndex = 0;
             this.txtNumeracion.Text = "";
+            this.txtNumeracion.TextChanged += new System.EventHandler(this.txtNumeracion_TextChanged);
             // 
             // panel3
             // 
@@ -352,15 +423,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1110, 156);
             this.panel3.TabIndex = 4;
-            // 
-            // lblNombreProyecto
-            // 
-            this.lblNombreProyecto.AutoSize = true;
-            this.lblNombreProyecto.Location = new System.Drawing.Point(3, 6);
-            this.lblNombreProyecto.Name = "lblNombreProyecto";
-            this.lblNombreProyecto.Size = new System.Drawing.Size(118, 17);
-            this.lblNombreProyecto.TabIndex = 0;
-            this.lblNombreProyecto.Text = "Proyecto: Prueba";
             // 
             // textBox1
             // 
@@ -389,6 +451,8 @@
             this.Name = "IDE";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IDE";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IDE_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.IDE_FormClosed);
             this.Load += new System.EventHandler(this.IDE_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -436,5 +500,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Label lblNombreProyecto;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolStripMenuItem cortarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem copiarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pegarToolStripMenuItem;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label lblPosicion;
     }
 }
