@@ -13,6 +13,7 @@ namespace IDE_Proyecto.interfazGrafica
 {
 
     using archivos;
+    using analizadores;
 
     //Todos los enum sirven para la sincronización entre los richTextBox
     public enum ScrollBarType : uint
@@ -177,6 +178,7 @@ namespace IDE_Proyecto.interfazGrafica
         private void txtArea_KeyUp(object sender, KeyEventArgs e)
         {
             coordenadas();
+            Pintar();
         }
 
 
@@ -228,5 +230,92 @@ namespace IDE_Proyecto.interfazGrafica
 
             lblPosicion.Text = "Posición: (" + (line+1) + "," + (column+1) + ")";
         }
+
+        private void Pintar()
+        {
+            int index = txtArea.SelectionStart;
+            int line = txtArea.GetLineFromCharIndex(index);
+
+            int firstChar = txtArea.GetFirstCharIndexFromLine(line);
+            int column = index - firstChar;
+
+            if (column != 0 && txtArea.Lines[line][column - 1] == ' ')
+            {
+                int strt = column - 2;
+
+                while (txtArea.Lines[line][strt] != 0 && strt > 0)
+                {
+                    if (txtArea.Lines[line][strt - 1] == ' ')
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        strt--;
+                    }
+                }
+                Automata au = new Automata(txtArea.Lines[line].Substring(strt, (column - 1) - strt));
+
+                int apoyo = 0;
+                for (int i = 0; i < line; i++)
+                {
+                    apoyo += txtArea.Lines[i].Length;
+                    apoyo++;
+                }
+                if (au.Aceptacion)
+                {
+                    if (txtArea.Lines.Length == 1)
+                        txtArea.Select(strt, (column - 1) - strt);
+                    else
+                        txtArea.Select(apoyo + strt, (column - 1) - strt);
+                    txtArea.SelectionColor = Color.FromName(au.Color);
+                    txtArea.SelectionStart = this.txtArea.Text.Length;
+                    txtArea.SelectionColor = Color.Black;
+                }
+            }
+        }
     }
 }
+
+
+
+//int index = txtArea.SelectionStart;
+//            int line = txtArea.GetLineFromCharIndex(index);
+
+//            int firstChar = txtArea.GetFirstCharIndexFromLine(line);
+//            int column = index - firstChar;
+
+//            if (column != 0 && txtArea.Lines[line][column - 1] == ' ')
+//            {
+//                int strt = column - 2;
+
+//                while (txtArea.Lines[line][strt] != 0 && strt > 0)
+//                {
+//                    if (txtArea.Lines[line][strt - 1] == ' ')
+//                    {
+//                        break;
+//                    }
+//                    else
+//                    {
+//                        strt--;
+//                    }
+//                }
+//                Automata au = new Automata(txtArea.Lines[line].Substring(strt, (column - 1) - strt));
+
+//                int apoyo = 0;
+//                for (int i = 0; i < line; i++)
+//                {
+//                    apoyo += txtArea.Lines[i].Length;
+//                    apoyo++;
+//                }
+//                if (au.Aceptacion)
+//                {
+//                    if (txtArea.Lines.Length == 1)
+//                        txtArea.Select(strt, (column - 1) - strt);
+//                    else
+//                        txtArea.Select(apoyo + strt, (column - 1) - strt);
+//                    txtArea.SelectionColor = Color.FromName(au.Color);
+//                    txtArea.SelectionStart = this.txtArea.Text.Length;
+//                    txtArea.SelectionColor = Color.Black;
+//                }
+//            }

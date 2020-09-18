@@ -9,9 +9,11 @@ namespace IDE_Proyecto.analizadores
     class Automata
     {
         private int cont, longitud;
-        private String cadenaIngresada;
+        private String cadenaIngresada, color;
+        private String azulOscuro = "RoyalBlue";
         private bool aceptacion;
         private char[] cadena;
+        private List<String> PalabrasReservadas;
 
         public Automata(String cadenaIngresada)
         {
@@ -19,12 +21,33 @@ namespace IDE_Proyecto.analizadores
             aceptacion = false;
             this.cadenaIngresada = cadenaIngresada;
             longitud = cadenaIngresada.Length;
+            color = "Black";
             cadena = cadenaIngresada.ToCharArray();
-
+            Inicializacion();
             Console.WriteLine("Para la cadena: " + cadenaIngresada + "\n\n");
 
             Q0();
 
+        }
+
+        private void Inicializacion()
+        {
+            PalabrasReservadas = new List<String>();
+            PalabrasReservadas.Add("entero");
+            PalabrasReservadas.Add("decimal");
+            PalabrasReservadas.Add("cadena");
+            PalabrasReservadas.Add("booleano");
+            PalabrasReservadas.Add("carácter");
+            PalabrasReservadas.Add("verdadero");
+            PalabrasReservadas.Add("falso");
+            PalabrasReservadas.Add("SI");
+            PalabrasReservadas.Add("SINO");
+            PalabrasReservadas.Add("SINO_SI");
+            PalabrasReservadas.Add("MIENTRAS");
+            PalabrasReservadas.Add("HACER");
+            PalabrasReservadas.Add("DESDE");
+            PalabrasReservadas.Add("HASTA");
+            PalabrasReservadas.Add("INCREMENTO");
         }
 
         public void Q0()
@@ -56,31 +79,51 @@ namespace IDE_Proyecto.analizadores
                 }
                 else if (cadena[cont] == '*' || cadena[cont] == '(' || cadena[cont] == ')' || cadena[cont] == ';') //por el momento omitimos la transición char
                 {
-                    cont++;
+                    if (cadena[cont] != ';')
+                    {
+                        color = azulOscuro;
+                    }
+                    else
+                    {
+                        color = "HotPink";
+                    }
+                    cont++; 
                     Q5();
                 }
                 else if (cadena[cont] == '/')
                 {
+                    color = azulOscuro;
                     cont++;
                     Q6();
                 }
                 else if (cadena[cont] == '=' || cadena[cont] == '!')
                 {
+                    if(cadena[cont] == '=')
+                    {
+                        color = "HotPink";
+                    }
+                    else
+                    {
+                        color = azulOscuro;
+                    }
                     cont++;
                     Q7();
                 }
                 else if (cadena[cont] == '<' || cadena[cont] == '>')
                 {
+                    color = azulOscuro;
                     cont++;
                     Q8();
                 }
                 else if (cadena[cont] == '|')
                 {
+                    color = azulOscuro;
                     cont++;
                     Q9();
                 }
                 else if (cadena[cont] == '&')
                 {
+                    color = azulOscuro;
                     cont++;
                     Q10();
                 }
@@ -96,6 +139,7 @@ namespace IDE_Proyecto.analizadores
         {
             Console.WriteLine("Q1");
             aceptacion = true;
+            color = azulOscuro;
             if (cont < longitud)
             {
                 if (Char.IsNumber(cadena[cont]))
@@ -103,7 +147,7 @@ namespace IDE_Proyecto.analizadores
                     cont++;
                     Q2();
                 }
-                if (cadena[cont] == '-')
+                else if (cadena[cont] == '-')
                 {
                     cont++;
                     Q5();
@@ -119,6 +163,7 @@ namespace IDE_Proyecto.analizadores
         {
             Console.WriteLine("Q2");
             aceptacion = true;
+            color = "BlueViolet";
             if (cont < longitud)
             {
                 if (Char.IsNumber(cadena[cont]))
@@ -142,9 +187,10 @@ namespace IDE_Proyecto.analizadores
         {
             Console.WriteLine("Q3");
             aceptacion = false;
-            int cad = cadena[cont];
+            color = "LightSlateGray";
             if (cont < longitud)
             {
+                int cad = cadena[cont];
                 if ((cad >= 0 && cad < 34) || (cad > 34 && cad <= 255))
                 {
                     cont++;
@@ -162,6 +208,7 @@ namespace IDE_Proyecto.analizadores
         {
             Console.WriteLine("Q4");
             aceptacion = true;
+            color = azulOscuro;
             if (cont < longitud)
             {
                 if (cadena[cont] == '+')
@@ -180,6 +227,10 @@ namespace IDE_Proyecto.analizadores
         {
             Console.WriteLine("Q5");
             aceptacion = true;
+            if(cont < longitud)
+            {
+                aceptacion = false;
+            }
         }
 
         public void Q6()
@@ -213,6 +264,7 @@ namespace IDE_Proyecto.analizadores
             {
                 if (cadena[cont] == '=')
                 {
+                    color = azulOscuro;
                     cont++;
                     Q5();
                 }
@@ -285,6 +337,20 @@ namespace IDE_Proyecto.analizadores
                     aceptacion = false;
                 }
             }
+            else
+            {
+                foreach(String element in PalabrasReservadas)
+                {
+                    if (element.Equals(cadenaIngresada))
+                    {
+                        color = "Green";
+                        if(element.Equals("verdadero") || element.Equals("falso"))
+                        {
+                            color = "DarkOrange";
+                        }
+                    }
+                }
+            }
         }
 
         public void Q12()
@@ -324,6 +390,7 @@ namespace IDE_Proyecto.analizadores
         {
             Console.WriteLine("Q15");
             aceptacion = true;
+            color = "LightSkyBlue";
             if(cont < longitud)
             {
                 if (Char.IsNumber(cadena[cont]))
@@ -342,6 +409,7 @@ namespace IDE_Proyecto.analizadores
         {
             Console.WriteLine("Q16");
             aceptacion = false;
+            color = "Red";
             if(cont < longitud)
             {
                 if(cadena[cont] == '/')
@@ -356,6 +424,7 @@ namespace IDE_Proyecto.analizadores
         {
             Console.WriteLine("Q17");
             aceptacion = false;
+            color = "Red";
             if(cont < longitud)
             {
                 if(cadena[cont] != '\n')
@@ -368,6 +437,22 @@ namespace IDE_Proyecto.analizadores
                     cont++;
                     Q5();
                 }
+            }
+        }
+
+        public bool Aceptacion
+        {
+            get
+            {
+                return aceptacion;
+            }
+        }
+
+        public String Color
+        {
+            get
+            {
+                return color;
             }
         }
 
