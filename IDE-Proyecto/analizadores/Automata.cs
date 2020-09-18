@@ -53,10 +53,10 @@ namespace IDE_Proyecto.analizadores
         public void Q0()
         {
             Console.WriteLine("Q0");
-            aceptacion = false;
-            int cad = cadena[cont];
+            aceptacion = false; 
             if (cont < longitud)
             {
+                int cad = cadena[cont];
                 if (cadena[cont] == '-')
                 {
                     cont++;

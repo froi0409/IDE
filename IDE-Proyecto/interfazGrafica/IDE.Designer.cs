@@ -398,6 +398,7 @@
             this.txtArea.VScroll += new System.EventHandler(this.txtArea_VScroll);
             this.txtArea.Click += new System.EventHandler(this.txtArea_Click);
             this.txtArea.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
+            this.txtArea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArea_KeyPress);
             this.txtArea.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtArea_KeyUp);
             // 
             // txtNumeracion

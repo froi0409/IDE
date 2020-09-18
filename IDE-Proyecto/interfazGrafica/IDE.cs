@@ -92,7 +92,11 @@ namespace IDE_Proyecto.interfazGrafica
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
+            int index = txtArea.SelectionStart;
+            int line = txtArea.GetLineFromCharIndex(index);
 
+            int firstChar = txtArea.GetFirstCharIndexFromLine(line);
+            int column = index - firstChar;
             coordenadas();
 
             //Condicion que nos sirve para verificar si hay alguna linea adicional
@@ -108,6 +112,15 @@ namespace IDE_Proyecto.interfazGrafica
                 txtArea_VScroll(sender, e);
             }
 
+            int strt = column - 1;
+            if (column != 0)
+            {
+                while (txtArea.Lines[line][strt] != ' ' && strt > 1)
+                {
+                    strt--;
+                }
+            }
+            Pintar(strt);
 
         }
 
@@ -177,8 +190,42 @@ namespace IDE_Proyecto.interfazGrafica
 
         private void txtArea_KeyUp(object sender, KeyEventArgs e)
         {
+            int index = txtArea.SelectionStart;
+            int line = txtArea.GetLineFromCharIndex(index);
+
+            int firstChar = txtArea.GetFirstCharIndexFromLine(line);
+            int column = index - firstChar;
+
             coordenadas();
-            Pintar();
+
+            //if (column != 0 && txtArea.Lines[line][column - 1] == ' ')
+            //{
+            //    int strt = column - 2;
+
+            //    while (txtArea.Lines[line][strt] != 0 && strt > 0)
+            //    {
+            //        if (txtArea.Lines[line][strt - 1] == ' ')
+            //        {
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            strt--;
+            //        }
+            //    }
+            //    Pintar(strt);
+            //}
+
+            //int strt = column - 1;
+            //if(column != 0)
+            //{
+            //    while (txtArea.Lines[line][strt] != ' ' && strt > 1)
+            //    {
+            //        strt--;
+            //    }
+            //}
+            //Pintar(strt);
+
         }
 
 
@@ -191,6 +238,11 @@ namespace IDE_Proyecto.interfazGrafica
         private void IDE_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit(); //Nos permite salir de la aplicación
+        }
+
+        private void txtArea_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
 
 
@@ -231,7 +283,7 @@ namespace IDE_Proyecto.interfazGrafica
             lblPosicion.Text = "Posición: (" + (line+1) + "," + (column+1) + ")";
         }
 
-        private void Pintar()
+        private void Pintar(int strt)
         {
             int index = txtArea.SelectionStart;
             int line = txtArea.GetLineFromCharIndex(index);
@@ -239,22 +291,11 @@ namespace IDE_Proyecto.interfazGrafica
             int firstChar = txtArea.GetFirstCharIndexFromLine(line);
             int column = index - firstChar;
 
-            if (column != 0 && txtArea.Lines[line][column - 1] == ' ')
+            //if (strt > 0)
+            //{
+            try
             {
-                int strt = column - 2;
-
-                while (txtArea.Lines[line][strt] != 0 && strt > 0)
-                {
-                    if (txtArea.Lines[line][strt - 1] == ' ')
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        strt--;
-                    }
-                }
-                Automata au = new Automata(txtArea.Lines[line].Substring(strt, (column - 1) - strt));
+                Automata au = new Automata(txtArea.Lines[line].Substring(strt + 1, (column) - strt - 1));
 
                 int apoyo = 0;
                 for (int i = 0; i < line; i++)
@@ -265,57 +306,23 @@ namespace IDE_Proyecto.interfazGrafica
                 if (au.Aceptacion)
                 {
                     if (txtArea.Lines.Length == 1)
-                        txtArea.Select(strt, (column - 1) - strt);
+                        txtArea.Select(strt, (column) - strt);
                     else
-                        txtArea.Select(apoyo + strt, (column - 1) - strt);
+                    {
+                        txtArea.Select(apoyo + strt, (column) - strt);
+                        Console.WriteLine(apoyo + "\nsi entró");
+                    }
+
                     txtArea.SelectionColor = Color.FromName(au.Color);
-                    txtArea.SelectionStart = this.txtArea.Text.Length;
+                    txtArea.SelectionStart = index;
+                    txtArea.SelectionLength = 0;
                     txtArea.SelectionColor = Color.Black;
                 }
+            } catch (Exception e)
+            {
+
             }
+            //}
         }
     }
 }
-
-
-
-//int index = txtArea.SelectionStart;
-//            int line = txtArea.GetLineFromCharIndex(index);
-
-//            int firstChar = txtArea.GetFirstCharIndexFromLine(line);
-//            int column = index - firstChar;
-
-//            if (column != 0 && txtArea.Lines[line][column - 1] == ' ')
-//            {
-//                int strt = column - 2;
-
-//                while (txtArea.Lines[line][strt] != 0 && strt > 0)
-//                {
-//                    if (txtArea.Lines[line][strt - 1] == ' ')
-//                    {
-//                        break;
-//                    }
-//                    else
-//                    {
-//                        strt--;
-//                    }
-//                }
-//                Automata au = new Automata(txtArea.Lines[line].Substring(strt, (column - 1) - strt));
-
-//                int apoyo = 0;
-//                for (int i = 0; i < line; i++)
-//                {
-//                    apoyo += txtArea.Lines[i].Length;
-//                    apoyo++;
-//                }
-//                if (au.Aceptacion)
-//                {
-//                    if (txtArea.Lines.Length == 1)
-//                        txtArea.Select(strt, (column - 1) - strt);
-//                    else
-//                        txtArea.Select(apoyo + strt, (column - 1) - strt);
-//                    txtArea.SelectionColor = Color.FromName(au.Color);
-//                    txtArea.SelectionStart = this.txtArea.Text.Length;
-//                    txtArea.SelectionColor = Color.Black;
-//                }
-//            }
