@@ -71,6 +71,7 @@
             this.btnAceptar.Size = new System.Drawing.Size(124, 28);
             this.btnAceptar.TabIndex = 12;
             this.btnAceptar.Text = "ACEPTAR";
+            this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // txtRuta
@@ -105,6 +106,7 @@
             this.btnRuta.Size = new System.Drawing.Size(124, 28);
             this.btnRuta.TabIndex = 15;
             this.btnRuta.Text = "Seleccionar";
+            this.btnRuta.UseVisualStyleBackColor = false;
             this.btnRuta.Click += new System.EventHandler(this.btnRuta_Click);
             // 
             // AperturaArchivo
@@ -114,7 +116,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(618, 199);
+            this.ClientSize = new System.Drawing.Size(612, 199);
             this.Controls.Add(this.btnRuta);
             this.Controls.Add(this.lblRuta);
             this.Controls.Add(this.btnCancelar);

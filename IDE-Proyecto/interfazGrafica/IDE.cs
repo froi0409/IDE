@@ -49,6 +49,7 @@ namespace IDE_Proyecto.interfazGrafica
         private String nombre, tipoDeCreacion, carpetaArchivos;
         private FileProyecto proyecto;
         private List<FileProyecto> archivos = new List<FileProyecto>(); //* Lista pensada para tener los archivos sin las modificaciones que se realicen en el IDE */
+        private List<String> errores = new List<String>();
 
         public IDE(FileProyecto proyecto, String nombre, String tipoDeCreacion, String carpetaArchivos)
         {
@@ -86,8 +87,13 @@ namespace IDE_Proyecto.interfazGrafica
 
             proyecto.ListaCodigoFuente[selectedFile].Contenido = txtArea.Text; //Le asignamos el texto correspondiente al espacio de texto de cada archivo
             selectedFile = lstArchivos.SelectedIndex;
-            txtArea.Text = proyecto.ListaCodigoFuente[selectedFile].Contenido; //Le asignamos el texto del archivo seleccionado a txtArea
 
+            txtArea.Text = "";
+
+            for (int i = 0; i < proyecto.ListaCodigoFuente[selectedFile].Contenido.Length; i++)
+            {
+                txtArea.AppendText(proyecto.ListaCodigoFuente[selectedFile].Contenido.Substring(i, 1));
+            }
         }
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
@@ -112,6 +118,26 @@ namespace IDE_Proyecto.interfazGrafica
                 txtArea_VScroll(sender, e);
             }
 
+            try
+            {
+                int strt = column - 1;
+                while (strt > 0 && txtArea.Lines[line][strt] != ' ')
+                {
+
+                    if (txtArea.Lines[line][strt - 1] == ' ')
+                    {
+                        break;
+                    }
+                    else
+                        strt--;
+
+                }
+                Pintar(strt);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(e);
+            }
 
         }
 
@@ -188,26 +214,7 @@ namespace IDE_Proyecto.interfazGrafica
             int column = index - firstChar;
 
             coordenadas();
-            try
-            {
-                int strt = column - 1;
-                while (strt > 0 && txtArea.Lines[line][strt] != ' ')
-                {
-
-                    if(txtArea.Lines[line][strt-1] == ' ')
-                    {
-                        break;
-                    }
-                    else
-                        strt--;
-
-                }
-                Pintar(strt);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(e);
-            }
+            
 
         }
 
@@ -274,8 +281,6 @@ namespace IDE_Proyecto.interfazGrafica
             int firstChar = txtArea.GetFirstCharIndexFromLine(line);
             int column = index - firstChar;
 
-            //if (strt > 0)
-            //{
             try
             {
                 Automata au = new Automata(txtArea.Lines[line].Substring(strt, (column) - strt));
@@ -286,26 +291,23 @@ namespace IDE_Proyecto.interfazGrafica
                     apoyo += txtArea.Lines[i].Length;
                     apoyo++;
                 }
-                if (au.Aceptacion)
+                
+                if (txtArea.Lines.Length == 1)
+                    txtArea.Select(strt, (column) - strt);
+                else
                 {
-
-                    if (txtArea.Lines.Length == 1)
-                        txtArea.Select(strt, (column) - strt);
-                    else
-                    {
-                        txtArea.Select(apoyo + strt, (column) - strt);
-                    }
-
-                    txtArea.SelectionColor = Color.FromName(au.Color);
-                    txtArea.SelectionStart = index;
-                    txtArea.SelectionLength = 0;
-                    txtArea.SelectionColor = Color.Black;
+                    txtArea.Select(apoyo + strt, (column) - strt);
                 }
+
+                txtArea.SelectionColor = Color.FromName(au.Color);
+                txtArea.SelectionStart = index;
+                txtArea.SelectionLength = 0;
+                txtArea.SelectionColor = Color.Black;
+
             } catch (Exception e)
             {
 
             }
-            //}
         }
     }
 }

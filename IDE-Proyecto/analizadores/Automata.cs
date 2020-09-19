@@ -9,7 +9,7 @@ namespace IDE_Proyecto.analizadores
     class Automata
     {
         private int cont, longitud;
-        private String cadenaIngresada, color;
+        private String cadenaIngresada, color = "Black";
         private String azulOscuro = "RoyalBlue";
         private bool aceptacion;
         private char[] cadena;
@@ -452,7 +452,10 @@ namespace IDE_Proyecto.analizadores
         {
             get
             {
-                return color;
+                if (aceptacion == true)
+                    return color;
+                else
+                    return "Black";
             }
         }
 
