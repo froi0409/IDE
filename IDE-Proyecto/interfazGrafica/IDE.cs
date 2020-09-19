@@ -112,15 +112,6 @@ namespace IDE_Proyecto.interfazGrafica
                 txtArea_VScroll(sender, e);
             }
 
-            int strt = column - 1;
-            if (column != 0)
-            {
-                while (txtArea.Lines[line][strt] != ' ' && strt > 1)
-                {
-                    strt--;
-                }
-            }
-            Pintar(strt);
 
         }
 
@@ -197,34 +188,26 @@ namespace IDE_Proyecto.interfazGrafica
             int column = index - firstChar;
 
             coordenadas();
+            try
+            {
+                int strt = column - 1;
+                while (strt > 0 && txtArea.Lines[line][strt] != ' ')
+                {
 
-            //if (column != 0 && txtArea.Lines[line][column - 1] == ' ')
-            //{
-            //    int strt = column - 2;
+                    if(txtArea.Lines[line][strt-1] == ' ')
+                    {
+                        break;
+                    }
+                    else
+                        strt--;
 
-            //    while (txtArea.Lines[line][strt] != 0 && strt > 0)
-            //    {
-            //        if (txtArea.Lines[line][strt - 1] == ' ')
-            //        {
-            //            break;
-            //        }
-            //        else
-            //        {
-            //            strt--;
-            //        }
-            //    }
-            //    Pintar(strt);
-            //}
-
-            //int strt = column - 1;
-            //if(column != 0)
-            //{
-            //    while (txtArea.Lines[line][strt] != ' ' && strt > 1)
-            //    {
-            //        strt--;
-            //    }
-            //}
-            //Pintar(strt);
+                }
+                Pintar(strt);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(e);
+            }
 
         }
 
@@ -295,7 +278,7 @@ namespace IDE_Proyecto.interfazGrafica
             //{
             try
             {
-                Automata au = new Automata(txtArea.Lines[line].Substring(strt + 1, (column) - strt - 1));
+                Automata au = new Automata(txtArea.Lines[line].Substring(strt, (column) - strt));
 
                 int apoyo = 0;
                 for (int i = 0; i < line; i++)
@@ -305,12 +288,12 @@ namespace IDE_Proyecto.interfazGrafica
                 }
                 if (au.Aceptacion)
                 {
+
                     if (txtArea.Lines.Length == 1)
                         txtArea.Select(strt, (column) - strt);
                     else
                     {
                         txtArea.Select(apoyo + strt, (column) - strt);
-                        Console.WriteLine(apoyo + "\nsi entró");
                     }
 
                     txtArea.SelectionColor = Color.FromName(au.Color);
