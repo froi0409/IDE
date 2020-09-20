@@ -67,5 +67,17 @@ namespace IDE_Proyecto.interfazGrafica
                 MessageBox.Show("Favor Ingresar la ruta del proyecto", "Ruta inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            pantallaInicial.Visible = true;
+            this.Visible = false;
+        }
+        
+        private void AperturaArchivo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            pantallaInicial.Visible = true;
+            this.Visible = false;
+        }
     }
 }
