@@ -39,6 +39,9 @@ namespace IDE_Proyecto.interfazGrafica
                 StreamWriter sw = new StreamWriter(carpetaProyecto + @"\" + txtNombre.Text + ".gt"); //Creamos el archivo nuevo
                 sw.Close();
                 proyecto.ListaCodigoFuente.Add(new FileCodigoFuente(txtNombre.Text + ".gt")); //Agregamos el archivo a la lista
+
+                proyecto.ListaCodigoFuente[proyecto.ListaCodigoFuente.Count - 1].Contenido = "";
+
                 ide.actualizacionDeRTB();
                 ide.LlenadoDeArchivos(); //Actualizamos el listbox
 

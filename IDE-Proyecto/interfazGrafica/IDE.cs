@@ -13,6 +13,7 @@ namespace IDE_Proyecto.interfazGrafica
 {
 
     using archivos;
+    using analizadores;
 
     //Todos los enum sirven para la sincronización entre los richTextBox
     public enum ScrollBarType : uint
@@ -48,6 +49,7 @@ namespace IDE_Proyecto.interfazGrafica
         private String nombre, tipoDeCreacion, carpetaArchivos;
         private FileProyecto proyecto;
         private List<FileProyecto> archivos = new List<FileProyecto>(); //* Lista pensada para tener los archivos sin las modificaciones que se realicen en el IDE */
+        private List<String> errores = new List<String>();
 
         public IDE(FileProyecto proyecto, String nombre, String tipoDeCreacion, String carpetaArchivos)
         {
@@ -85,13 +87,22 @@ namespace IDE_Proyecto.interfazGrafica
 
             proyecto.ListaCodigoFuente[selectedFile].Contenido = txtArea.Text; //Le asignamos el texto correspondiente al espacio de texto de cada archivo
             selectedFile = lstArchivos.SelectedIndex;
-            txtArea.Text = proyecto.ListaCodigoFuente[selectedFile].Contenido; //Le asignamos el texto del archivo seleccionado a txtArea
 
+            txtArea.Text = "";
+
+            for (int i = 0; i < proyecto.ListaCodigoFuente[selectedFile].Contenido.Length; i++)
+            {
+                txtArea.AppendText(proyecto.ListaCodigoFuente[selectedFile].Contenido.Substring(i, 1));
+            }
         }
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
+            int index = txtArea.SelectionStart;
+            int line = txtArea.GetLineFromCharIndex(index);
 
+            int firstChar = txtArea.GetFirstCharIndexFromLine(line);
+            int column = index - firstChar;
             coordenadas();
 
             //Condicion que nos sirve para verificar si hay alguna linea adicional
@@ -106,8 +117,30 @@ namespace IDE_Proyecto.interfazGrafica
                 }
                 txtArea_VScroll(sender, e);
             }
+            if (index == txtArea.TextLength)
+            {
+                try
+                {
+                    int strt = column - 1;
+                    int length;
+                    while (strt > 0 && txtArea.Lines[line][strt] != ' ')
+                    {
+                        if (txtArea.Lines[line][strt - 1] == ' ')
+                        {
+                            break;
+                        }
+                        else
+                            strt--;
 
-
+                    }
+                    length = column - strt;
+                    Pintar(strt, length);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(e);
+                }
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -173,10 +206,18 @@ namespace IDE_Proyecto.interfazGrafica
         {
             coordenadas();
         }
-
+        
         private void txtArea_KeyUp(object sender, KeyEventArgs e)
         {
+            int index = txtArea.SelectionStart;
+            int line = txtArea.GetLineFromCharIndex(index);
+
+            int firstChar = txtArea.GetFirstCharIndexFromLine(line);
+            int column = index - firstChar;
+
             coordenadas();
+            
+
         }
 
 
@@ -189,6 +230,11 @@ namespace IDE_Proyecto.interfazGrafica
         private void IDE_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit(); //Nos permite salir de la aplicación
+        }
+
+        private void txtArea_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
 
 
@@ -227,6 +273,43 @@ namespace IDE_Proyecto.interfazGrafica
             int column = index - firstChar;
 
             lblPosicion.Text = "Posición: (" + (line+1) + "," + (column+1) + ")";
+        }
+
+        private void Pintar(int strt, int length)
+        {
+            int index = txtArea.SelectionStart;
+            int line = txtArea.GetLineFromCharIndex(index);
+
+            int firstChar = txtArea.GetFirstCharIndexFromLine(line);
+            int column = index - firstChar;
+
+            try
+            {
+                Automata au = new Automata(txtArea.Lines[line].Substring(strt, length));
+
+                int apoyo = 0;
+                for (int i = 0; i < line; i++)
+                {
+                    apoyo += txtArea.Lines[i].Length;
+                    apoyo++;
+                }
+                
+                if (txtArea.Lines.Length == 1)
+                    txtArea.Select(strt, length);
+                else
+                {
+                    txtArea.Select(apoyo + strt, length);
+                }
+
+                txtArea.SelectionColor = Color.FromName(au.Color);
+                txtArea.SelectionStart = index;
+                txtArea.SelectionLength = 0;
+                txtArea.SelectionColor = Color.Black;
+
+            } catch (Exception e)
+            {
+
+            }
         }
     }
 }

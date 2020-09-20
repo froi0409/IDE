@@ -109,7 +109,16 @@ namespace IDE_Proyecto.interfazGrafica
                         }
                         else if (tipoDeCreacion.Equals("Archivo"))
                         {
+                            proyecto = new FileProyecto();
+                            String rutaProyecto = txtRuta.Text;
+                            
+                            proyecto.ListaCodigoFuente.Add(new FileCodigoFuente(txtNombre.Text + ".gt"));
+                            StreamWriter sr = new StreamWriter(rutaProyecto + @"\" + txtNombre.Text + ".gt");
+                            sr.Close();
 
+                            IDE ide = new IDE(proyecto, txtNombre.Text, tipoDeCreacion, rutaProyecto); //CREACIÓN DEL IDE
+                            ide.Visible = true;
+                            this.Visible = false;
                         }
                         else //Esta condición no debería ejecutarse nunca, a menos que el proramador no haya enviado bien un parámetro al constructor de la clase
                         {
