@@ -13,6 +13,7 @@ namespace IDE_Proyecto.analizadores
 
         private RichTextBox txtArea;
         private int index, line, column, firstChar;
+        Automata automata = new Automata();
 
         public AnalizadorDeToken(RichTextBox txtArea)
         {
@@ -26,27 +27,41 @@ namespace IDE_Proyecto.analizadores
 
             if (index == txtArea.TextLength)
             {
+                //try
+                //{
+                //    int strt = column - 1;
+                //    int length;
+                //    while (strt > 0 && txtArea.Lines[line][strt] != ' ')
+                //    {
+                //        if (txtArea.Lines[line][strt - 1] == ' ')
+                //        {
+                //            break;
+                //        }
+                //        else
+                //            strt--;
+
+                //    }
+                //    length = column - strt;
+                //    Pintar(strt, length);
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex);
+                //}
+
+                //Automata au = new Automata(txtArea.Lines[line].Substring(strt, length));
                 try
                 {
                     int strt = column - 1;
-                    int length;
-                    while (strt > 0 && txtArea.Lines[line][strt] != ' ')
+                    automata.Comprobar(txtArea.Lines[line].Substring(strt, 1));
+                    Console.WriteLine("token: " + txtArea.Lines[line].Substring(strt, 1));
+                    if (automata.Aceptacion)
                     {
-                        if (txtArea.Lines[line][strt - 1] == ' ')
-                        {
-                            break;
-                        }
-                        else
-                            strt--;
-
+                        Pintar(strt, 1);
                     }
-                    length = column - strt;
-                    Pintar(strt, length);
                 }
                 catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
+                {}
             }
         }
 
@@ -61,38 +76,26 @@ namespace IDE_Proyecto.analizadores
 
         private void Pintar(int strt, int length)
         {
-            int index = txtArea.SelectionStart;
-            int line = txtArea.GetLineFromCharIndex(index);
-
-            int firstChar = txtArea.GetFirstCharIndexFromLine(line);
-            int column = index - firstChar;
-
-            try
+            
+            int apoyo = 0;
+            for (int i = 0; i < line; i++)
             {
-                Automata au = new Automata(txtArea.Lines[line].Substring(strt, length));
-
-                int apoyo = 0;
-                for (int i = 0; i < line; i++)
-                {
-                    apoyo += txtArea.Lines[i].Length;
-                    apoyo++;
-                }
-
-                if (txtArea.Lines.Length == 1)
-                    txtArea.Select(strt, length);
-                else
-                {
-                    txtArea.Select(apoyo + strt, length);
-                }
-
-                txtArea.SelectionColor = Color.FromName(au.Color);
-                txtArea.SelectionStart = index;
-                txtArea.SelectionLength = 0;
-                txtArea.SelectionColor = Color.Black;
-
+                apoyo += txtArea.Lines[i].Length;
+                apoyo++;
             }
-            catch (Exception e)
-            { }
+
+            if (txtArea.Lines.Length == 1)
+                txtArea.Select(strt, length);
+            else
+            {
+                txtArea.Select(apoyo + strt, length);
+            }
+
+            txtArea.SelectionColor = Color.FromName(automata.Color);
+            txtArea.SelectionStart = index;
+            txtArea.SelectionLength = 0;
+            txtArea.SelectionColor = Color.Black;
+ 
         }
 
     }
