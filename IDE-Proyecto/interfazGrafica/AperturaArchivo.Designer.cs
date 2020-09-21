@@ -60,6 +60,7 @@
             this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnAceptar
             // 
@@ -126,6 +127,7 @@
             this.Name = "AperturaArchivo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AperturaArchivo";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AperturaArchivo_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

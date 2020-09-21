@@ -15,19 +15,26 @@ namespace IDE_Proyecto.analizadores
         private char[] cadena;
         private List<String> PalabrasReservadas;
 
-        public Automata(String cadenaIngresada)
+        public Automata()
         {
-            cont = 0;
-            aceptacion = false;
+            
+            Inicializacion();
+
+        }
+
+        public bool Comprobar(String cadenaIngresada)
+        {
             this.cadenaIngresada = cadenaIngresada;
             longitud = cadenaIngresada.Length;
-            color = "Black";
             cadena = cadenaIngresada.ToCharArray();
-            Inicializacion();
-            Console.WriteLine("Para la cadena: " + cadenaIngresada + "\n\n");
+            cont = 0;
+            aceptacion = false;
+            color = "Black";
 
+            Console.WriteLine("\n\nPara la cadena: " + cadenaIngresada);
             Q0();
 
+            return aceptacion;
         }
 
         private void Inicializacion()
@@ -50,10 +57,10 @@ namespace IDE_Proyecto.analizadores
             PalabrasReservadas.Add("INCREMENTO");
         }
 
-        public void Q0()
+        private void Q0()
         {
             Console.WriteLine("Q0");
-            aceptacion = false; 
+            aceptacion = false;
             if (cont < longitud)
             {
                 int cad = cadena[cont];
@@ -87,7 +94,7 @@ namespace IDE_Proyecto.analizadores
                     {
                         color = "HotPink";
                     }
-                    cont++; 
+                    cont++;
                     Q5();
                 }
                 else if (cadena[cont] == '/')
@@ -98,7 +105,7 @@ namespace IDE_Proyecto.analizadores
                 }
                 else if (cadena[cont] == '=' || cadena[cont] == '!')
                 {
-                    if(cadena[cont] == '=')
+                    if (cadena[cont] == '=')
                     {
                         color = "HotPink";
                     }
@@ -135,7 +142,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q1()
+        private void Q1()
         {
             Console.WriteLine("Q1");
             aceptacion = true;
@@ -159,7 +166,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q2()
+        private void Q2()
         {
             Console.WriteLine("Q2");
             aceptacion = true;
@@ -183,7 +190,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q3()
+        private void Q3()
         {
             Console.WriteLine("Q3");
             aceptacion = false;
@@ -204,7 +211,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q4()
+        private void Q4()
         {
             Console.WriteLine("Q4");
             aceptacion = true;
@@ -223,17 +230,18 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q5()
+        private void Q5()
         {
             Console.WriteLine("Q5");
             aceptacion = true;
             if(cont < longitud)
             {
                 aceptacion = false;
+                color = "Black";
             }
         }
 
-        public void Q6()
+        private void Q6()
         {
             Console.WriteLine("Q6");
             aceptacion = true;
@@ -256,7 +264,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q7()
+        private void Q7()
         {
             Console.WriteLine("Q7");
             aceptacion = true;
@@ -275,7 +283,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q8()
+        private void Q8()
         {
             Console.WriteLine("Q8");
             aceptacion = true;
@@ -293,7 +301,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q9()
+        private void Q9()
         {
             Console.WriteLine("Q9");
             aceptacion = false;
@@ -307,7 +315,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q10()
+        private void Q10()
         {
             Console.WriteLine("Q10");
             aceptacion = false;
@@ -321,7 +329,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q11()
+        private void Q11()
         {
             Console.WriteLine("Q11");
             aceptacion = true;
@@ -353,7 +361,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q12()
+        private void Q12()
         {
             Console.WriteLine("Q12");
             aceptacion = false;
@@ -367,7 +375,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q13()
+        private void Q13()
         {
             Console.WriteLine("Q13");
             aceptacion = false;
@@ -386,7 +394,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q15()
+        private void Q15()
         {
             Console.WriteLine("Q15");
             aceptacion = true;
@@ -405,7 +413,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q16()
+        private void Q16()
         {
             Console.WriteLine("Q16");
             aceptacion = false;
@@ -420,7 +428,7 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
-        public void Q17()
+        private void Q17()
         {
             Console.WriteLine("Q17");
             aceptacion = false;

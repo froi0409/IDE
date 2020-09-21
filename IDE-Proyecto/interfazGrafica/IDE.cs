@@ -48,6 +48,7 @@ namespace IDE_Proyecto.interfazGrafica
         private int cantLineas = 1, selectedFile = 0;
         private String nombre, tipoDeCreacion, carpetaArchivos;
         private FileProyecto proyecto;
+        private AnalizadorDeToken analizadorToken;
         private List<FileProyecto> archivos = new List<FileProyecto>(); //* Lista pensada para tener los archivos sin las modificaciones que se realicen en el IDE */
         private List<String> errores = new List<String>();
 
@@ -58,6 +59,7 @@ namespace IDE_Proyecto.interfazGrafica
             this.tipoDeCreacion = tipoDeCreacion;
             this.proyecto = proyecto;
             this.carpetaArchivos = carpetaArchivos;
+            analizadorToken = new AnalizadorDeToken(txtArea);
             txtNumeracion.Text = "1";
             LlenadoDeArchivos();
         }
@@ -98,11 +100,6 @@ namespace IDE_Proyecto.interfazGrafica
 
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
-            int index = txtArea.SelectionStart;
-            int line = txtArea.GetLineFromCharIndex(index);
-
-            int firstChar = txtArea.GetFirstCharIndexFromLine(line);
-            int column = index - firstChar;
             coordenadas();
 
             //Condicion que nos sirve para verificar si hay alguna linea adicional
@@ -117,30 +114,9 @@ namespace IDE_Proyecto.interfazGrafica
                 }
                 txtArea_VScroll(sender, e);
             }
-            if (index == txtArea.TextLength)
-            {
-                try
-                {
-                    int strt = column - 1;
-                    int length;
-                    while (strt > 0 && txtArea.Lines[line][strt] != ' ')
-                    {
-                        if (txtArea.Lines[line][strt - 1] == ' ')
-                        {
-                            break;
-                        }
-                        else
-                            strt--;
 
-                    }
-                    length = column - strt;
-                    Pintar(strt, length);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(e);
-                }
-            }
+            analizadorToken.AnalizarToken();
+
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -231,6 +207,64 @@ namespace IDE_Proyecto.interfazGrafica
         {
             Application.Exit(); //Nos permite salir de la aplicación
         }
+        
+        private void button7_Click(object sender, EventArgs e)
+        {
+            txtLog.Text = "Area Log: " + Environment.NewLine;
+            AnalizadorLog al = new AnalizadorLog();
+            int index = txtArea.SelectionStart;
+            al.Analizar(txtArea, txtLog, index);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AperturaArchivo aa = new AperturaArchivo(this);
+            aa.Visible = true;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            NuevoArchivo na = new NuevoArchivo(this, proyecto, carpetaArchivos);
+            na.Visible = true;
+        }
+    
+
+        private void proyectoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AperturaArchivo aa = new AperturaArchivo(this);
+            aa.Visible = true;
+        }
+
+        private void archivoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            NuevoArchivo na = new NuevoArchivo(this, proyecto, carpetaArchivos);
+            na.Visible = true;
+        }
+
+        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FileLog fl = new FileLog();
+            lstArchivos.SelectedIndex = selectedFile;
+            fl.Crear(carpetaArchivos, lstArchivos.SelectedItem.ToString(), txtLog);
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CreacionDeProyecto cdp = new CreacionDeProyecto("Proyecto", new PantallaInicial());
+            cdp.Visible = true;
+        }
+
+        private void proyectoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreacionDeProyecto cdp = new CreacionDeProyecto("Proyecto", new PantallaInicial());
+            cdp.Visible = true;
+        }
 
         private void txtArea_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -275,41 +309,5 @@ namespace IDE_Proyecto.interfazGrafica
             lblPosicion.Text = "Posición: (" + (line+1) + "," + (column+1) + ")";
         }
 
-        private void Pintar(int strt, int length)
-        {
-            int index = txtArea.SelectionStart;
-            int line = txtArea.GetLineFromCharIndex(index);
-
-            int firstChar = txtArea.GetFirstCharIndexFromLine(line);
-            int column = index - firstChar;
-
-            try
-            {
-                Automata au = new Automata(txtArea.Lines[line].Substring(strt, length));
-
-                int apoyo = 0;
-                for (int i = 0; i < line; i++)
-                {
-                    apoyo += txtArea.Lines[i].Length;
-                    apoyo++;
-                }
-                
-                if (txtArea.Lines.Length == 1)
-                    txtArea.Select(strt, length);
-                else
-                {
-                    txtArea.Select(apoyo + strt, length);
-                }
-
-                txtArea.SelectionColor = Color.FromName(au.Color);
-                txtArea.SelectionStart = index;
-                txtArea.SelectionLength = 0;
-                txtArea.SelectionColor = Color.Black;
-
-            } catch (Exception e)
-            {
-
-            }
-        }
     }
 }

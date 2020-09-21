@@ -18,6 +18,7 @@ namespace IDE_Proyecto.archivos
         public FileCodigoFuente(String nombre)
         {
             this.nombre = nombre;
+            this.contenido = "";
         }
 
         public override void Abrir(String ruta)
