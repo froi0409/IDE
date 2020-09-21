@@ -13,9 +13,9 @@ namespace IDE_Proyecto.analizadores
 
         private RichTextBox txtArea;
         private List<char> Dobles = new List<char>();
-        private int index, line, column, firstChar, startcomment = 0, lengthcomment = 0, commentline = 0;
+        private int index, line, column, firstChar, startcomment = 0, lengthcomment = 0, startcadena = 0, lengthcadena = 0;
         private Automata automata = new Automata();
-        private bool comment = false;
+        private bool comment = false, cadena = false;
 
         public AnalizadorDeToken(RichTextBox txtArea)
         {
@@ -132,27 +132,36 @@ namespace IDE_Proyecto.analizadores
                         automata.Comprobar(txtArea.Lines[line].Substring(strt2, length));
                         Pintar(strt2, length);
                     }
-                    if (strt > 1)
+                    else if (txtArea.Lines[line][strt] == '"')
                     {
-                        if (comment == true)
+                        int strt2 = strt;
+                        int length;
+
+                        //Envío de cadenas de caracteres - al autómata, strt2 es el inicio de la cadena
+                        do
                         {
-                            lengthcomment++;
-                            if(txtArea.Lines[line][strt] == '/' && txtArea.Lines[line][strt - 1] == '*')
+                            strt2--;
+                        } while (strt2 > 0 && txtArea.Lines[line][strt2] != '"');
+                        length = column - strt2;
+                        if(automata.Comprobar(txtArea.Lines[line].Substring(strt2, length)))
+                            Pintar(strt2, length);
+                    }
+                    else if (txtArea.Lines[line][strt] == '/' && txtArea.Lines[line][strt-1] == '*')
+                    {
+                        int strt2 = strt;
+                        int length;
+
+                        //Envío de cadenas de caracteres - al autómata, strt2 es el inicio de la cadena
+                        do
+                        {
+                            do
                             {
-                                if(automata.Comprobar(txtArea.Lines[line].Substring(startcomment, lengthcomment)))
-                                {
-                                    Pintar(startcomment, lengthcomment);
-                                    comment = false;
-                                    lengthcomment = 0;
-                                }
-                            }
-                        }
-                        if (txtArea.Lines[line][strt] == '*' && txtArea.Lines[line][strt - 1] == '/')
-                        {
-                            comment = true;
-                            startcomment = strt - 1;
-                            lengthcomment+=2;
-                        }
+                                strt2--;
+                            } while (strt2 > 0 && txtArea.Lines[line][strt2] != '/');
+                        } while (txtArea.Lines[line][strt2 + 1] != '*');
+                        length = column - strt2;
+                        automata.Comprobar(txtArea.Lines[line].Substring(strt2, length));
+                        Pintar(strt2, length);
                     }
 
                 }

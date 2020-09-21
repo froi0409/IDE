@@ -15,9 +15,9 @@ namespace IDE_Proyecto.interfazGrafica
     public partial class AperturaArchivo : Form
     {
 
-        private PantallaInicial pantallaInicial;
+        private Form pantallaInicial;
 
-        public AperturaArchivo(PantallaInicial pantallaInicial)
+        public AperturaArchivo(Form pantallaInicial)
         {
             InitializeComponent();
             this.pantallaInicial = pantallaInicial;
@@ -39,6 +39,11 @@ namespace IDE_Proyecto.interfazGrafica
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            Creacion();
+        }
+
+        public void Creacion()
         {
             if (txtRuta.TextLength > 1 && Directory.Exists(txtRuta.Text))
             {

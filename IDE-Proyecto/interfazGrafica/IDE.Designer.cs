@@ -45,6 +45,7 @@
             this.txtNumeracion = new System.Windows.Forms.RichTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtLog = new System.Windows.Forms.TextBox();
+            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -75,7 +76,7 @@
             this.archivoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1110, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1110, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -88,8 +89,9 @@
             this.guardarToolStripMenuItem,
             this.guardarComoToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 26);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.archivoToolStripMenuItem.Text = "Archivo";
+            this.archivoToolStripMenuItem.Click += new System.EventHandler(this.archivoToolStripMenuItem_Click);
             // 
             // nuevoToolStripMenuItem
             // 
@@ -97,7 +99,7 @@
             this.proyectoToolStripMenuItem,
             this.archivoToolStripMenuItem1});
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             // 
             // abrirToolStripMenuItem
@@ -106,7 +108,7 @@
             this.proyectoToolStripMenuItem1,
             this.archivoToolStripMenuItem2});
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.abrirToolStripMenuItem.Text = "Abrir";
             // 
             // toolStripSeparator1
@@ -250,6 +252,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel3.Controls.Add(this.button8);
             this.panel3.Controls.Add(this.txtLog);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 542);
@@ -263,11 +266,32 @@
             this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtLog.Font = new System.Drawing.Font("Microsoft Tai Le", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLog.Location = new System.Drawing.Point(0, 0);
+            this.txtLog.MaxLength = 3276721;
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
+            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.txtLog.Size = new System.Drawing.Size(1110, 156);
             this.txtLog.TabIndex = 0;
             this.txtLog.Text = "Area Log:";
+            // 
+            // button8
+            // 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button8.Image = global::IDE_Proyecto.Properties.Resources.list_3_opt;
+            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button8.Location = new System.Drawing.Point(995, 121);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(112, 32);
+            this.button8.TabIndex = 7;
+            this.button8.Text = "Exportar";
+            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button7
             // 
@@ -327,6 +351,7 @@
             this.button4.Size = new System.Drawing.Size(30, 30);
             this.button4.TabIndex = 3;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -367,27 +392,31 @@
             this.button1.Size = new System.Drawing.Size(30, 30);
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // proyectoToolStripMenuItem
             // 
             this.proyectoToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.folder_opt1;
             this.proyectoToolStripMenuItem.Name = "proyectoToolStripMenuItem";
-            this.proyectoToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
+            this.proyectoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.proyectoToolStripMenuItem.Text = "Proyecto";
+            this.proyectoToolStripMenuItem.Click += new System.EventHandler(this.proyectoToolStripMenuItem_Click);
             // 
             // archivoToolStripMenuItem1
             // 
             this.archivoToolStripMenuItem1.Image = global::IDE_Proyecto.Properties.Resources.notepad_opt;
             this.archivoToolStripMenuItem1.Name = "archivoToolStripMenuItem1";
-            this.archivoToolStripMenuItem1.Size = new System.Drawing.Size(150, 26);
+            this.archivoToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.archivoToolStripMenuItem1.Text = "Archivo";
+            this.archivoToolStripMenuItem1.Click += new System.EventHandler(this.archivoToolStripMenuItem1_Click);
             // 
             // proyectoToolStripMenuItem1
             // 
             this.proyectoToolStripMenuItem1.Image = global::IDE_Proyecto.Properties.Resources.folder_3_opt1;
             this.proyectoToolStripMenuItem1.Name = "proyectoToolStripMenuItem1";
-            this.proyectoToolStripMenuItem1.Size = new System.Drawing.Size(150, 26);
+            this.proyectoToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.proyectoToolStripMenuItem1.Text = "Proyecto";
+            this.proyectoToolStripMenuItem1.Click += new System.EventHandler(this.proyectoToolStripMenuItem1_Click);
             // 
             // archivoToolStripMenuItem2
             // 
@@ -477,5 +506,6 @@
         private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label lblPosicion;
+        private System.Windows.Forms.Button button8;
     }
 }

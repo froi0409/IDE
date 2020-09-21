@@ -37,7 +37,7 @@ namespace IDE_Proyecto.analizadores
                 }
                 if (txtArea.SelectionColor != Color.Black || error.Length == txtArea.TextLength)
                 {
-                    if (error.Length > 0)
+                    if (error.Length > 1)
                     {
                         txtLog.Text += (Environment.NewLine + "Error en linea " + (line+1) + " - Descripción: " + error);
                         error = "";
@@ -46,7 +46,7 @@ namespace IDE_Proyecto.analizadores
             }
             index2 = txtArea.SelectionStart;
             line = txtArea.GetLineFromCharIndex(index2);
-            if (error.Length > 0) //Añadimos el error, en dado caso este pertenezca a la última cadena del área de texto
+            if (error.Length > 1) //Añadimos el error, en dado caso este pertenezca a la última cadena del área de texto
             {
                 txtLog.Text += (Environment.NewLine + "Error en linea " + (line+1) + " - Descripción: " + error);
             }

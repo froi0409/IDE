@@ -133,6 +133,16 @@ namespace IDE_Proyecto.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap list_3_opt {
+            get {
+                object obj = ResourceManager.GetObject("list-3_opt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap notepad_3_opt {
             get {
                 object obj = ResourceManager.GetObject("notepad-3_opt", resourceCulture);

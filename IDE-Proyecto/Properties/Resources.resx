@@ -127,11 +127,14 @@
   <data name="notepad_opt" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\notepad_opt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="folder_opt1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\folder_opt1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="notepad_opt1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\notepad_opt1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="notepad-3_opt1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\notepad-3_opt1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="jugar (2)_opt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\jugar (2)_opt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="folder-3_opt" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder-3_opt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,13 +145,13 @@
   <data name="folder_opt" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\folder_opt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="notepad_opt1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\notepad_opt1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="folder_opt1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\folder_opt1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="flexible_opt" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flexible_opt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="jugar (2)_opt" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\jugar (2)_opt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="list-3_opt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\list-3_opt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

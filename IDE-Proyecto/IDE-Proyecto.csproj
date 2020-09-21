@@ -50,6 +50,7 @@
     <Compile Include="analizadores\AnalizadorLog.cs" />
     <Compile Include="analizadores\Automata.cs" />
     <Compile Include="archivos\FileCodigoFuente.cs" />
+    <Compile Include="archivos\FileLog.cs" />
     <Compile Include="archivos\FileProyecto.cs" />
     <Compile Include="archivos\ManipulacionArchivo.cs" />
     <Compile Include="interfazGrafica\AperturaArchivo.cs">
@@ -154,6 +155,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\guardar-el-archivo %282%29_opt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list-3_opt.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

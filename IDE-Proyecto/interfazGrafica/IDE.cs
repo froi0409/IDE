@@ -218,7 +218,52 @@ namespace IDE_Proyecto.interfazGrafica
 
         private void button2_Click(object sender, EventArgs e)
         {
+            AperturaArchivo aa = new AperturaArchivo(this);
+            aa.Visible = true;
+        }
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            NuevoArchivo na = new NuevoArchivo(this, proyecto, carpetaArchivos);
+            na.Visible = true;
+        }
+    
+
+        private void proyectoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            AperturaArchivo aa = new AperturaArchivo(this);
+            aa.Visible = true;
+        }
+
+        private void archivoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            NuevoArchivo na = new NuevoArchivo(this, proyecto, carpetaArchivos);
+            na.Visible = true;
+        }
+
+        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            FileLog fl = new FileLog();
+            lstArchivos.SelectedIndex = selectedFile;
+            fl.Crear(carpetaArchivos, lstArchivos.SelectedItem.ToString(), txtLog);
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CreacionDeProyecto cdp = new CreacionDeProyecto("Proyecto", new PantallaInicial());
+            cdp.Visible = true;
+        }
+
+        private void proyectoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreacionDeProyecto cdp = new CreacionDeProyecto("Proyecto", new PantallaInicial());
+            cdp.Visible = true;
         }
 
         private void txtArea_KeyPress(object sender, KeyPressEventArgs e)
