@@ -12,7 +12,7 @@ namespace IDE_Proyecto.analizadores
     {
 
         private RichTextBox txtArea;
-        private List<char> Separacion = new List<char>();
+        private List<char> Dobles = new List<char>();
         private int index, line, column, firstChar, startcomment = 0, lengthcomment = 0, commentline = 0;
         private Automata automata = new Automata();
         private bool comment = false;
@@ -25,20 +25,9 @@ namespace IDE_Proyecto.analizadores
 
         private void Inicialización()
         {
-            Separacion.Add(' ');
-            Separacion.Add('-');
-            Separacion.Add('+');
-            Separacion.Add('*');
-            Separacion.Add('/');
-            Separacion.Add('>');
-            Separacion.Add('<');
-            Separacion.Add('=');
-            Separacion.Add('!');
-            Separacion.Add('|');
-            Separacion.Add('&');
-            Separacion.Add('(');
-            Separacion.Add(')');
-            Separacion.Add(';');
+            Dobles.Add('|');
+            Dobles.Add('&');
+            Dobles.Add('=');
         }
 
         public void AnalizarToken()
@@ -76,7 +65,7 @@ namespace IDE_Proyecto.analizadores
 
                         }
                         length = column - strt2;
-                        if (automata.Comprobar(txtArea.Lines[line].Substring(strt2, length)));
+                        if (automata.Comprobar(txtArea.Lines[line].Substring(strt2, length)))
                             Pintar(strt2, length);
                     }
                     else if(Char.IsNumber(txtArea.Lines[line][strt]) || txtArea.Lines[line][strt] == '.')
@@ -95,47 +84,14 @@ namespace IDE_Proyecto.analizadores
 
                         }
                         length = column - strt2;
-                        if (automata.Comprobar(txtArea.Lines[line].Substring(strt2, length))) ;
-                        Pintar(strt2, length);
+                        if (automata.Comprobar(txtArea.Lines[line].Substring(strt2, length))) 
+                            Pintar(strt2, length);
                     }
-
- 
-                    //Obtenemos comentarios
-                    try
-                    {
-
-                        //if (comment == true && txtArea.Lines[line][strt] == '/' && txtArea.Lines[line][strt - 1] == '*')
-                        //{
-                        //    lengthcomment += 2;
-                            
-                        //    Console.WriteLine("Cadena de comentarrio: " + txtArea.Text.Substring(startcomment, lengthcomment));
-
-                            
-
-                        //    if (automata.Comprobar(txtArea.Text.Substring(startcomment, lengthcomment)))
-                        //    {
-                        //        Pintar(startcomment, lengthcomment);
-                        //    }
-
-                        //    comment = false;
-                        //    lengthcomment = 0;
-                        //}
-
-                        //if (txtArea.Lines[line][strt] == '*' && txtArea.Lines[line][strt - 1] == '/')
-                        //{
-                        //    startcomment = column - 2;
-                        //    lengthcomment = 0;
-                        //    comment = true;
-                        //}
-
-                        //if (comment == true)
-                        //{
-                        //    lengthcomment++;
-                        //}
-
+                    else if (strt > 0 && Dobles.Contains(txtArea.Lines[line][strt])) {
+                        Console.WriteLine("Cadena: " + txtArea.Lines[line].Substring(strt - 1, 2));
+                        if (automata.Comprobar(txtArea.Lines[line].Substring(strt - 1, 2)))
+                            Pintar(strt - 1, 2);
                     }
-                    catch { }
-
                 }
                 catch (Exception ex)
                 {}
