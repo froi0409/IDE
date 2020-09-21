@@ -12,12 +12,33 @@ namespace IDE_Proyecto.analizadores
     {
 
         private RichTextBox txtArea;
-        private int index, line, column, firstChar;
-        Automata automata = new Automata();
+        private List<char> Separacion = new List<char>();
+        private int index, line, column, firstChar, startcomment = 0, lengthcomment = 0, commentline = 0;
+        private Automata automata = new Automata();
+        private bool comment = false;
 
         public AnalizadorDeToken(RichTextBox txtArea)
         {
             this.txtArea = txtArea;
+            Inicialización();
+        }
+
+        private void Inicialización()
+        {
+            Separacion.Add(' ');
+            Separacion.Add('-');
+            Separacion.Add('+');
+            Separacion.Add('*');
+            Separacion.Add('/');
+            Separacion.Add('>');
+            Separacion.Add('<');
+            Separacion.Add('=');
+            Separacion.Add('!');
+            Separacion.Add('|');
+            Separacion.Add('&');
+            Separacion.Add('(');
+            Separacion.Add(')');
+            Separacion.Add(';');
         }
 
         public void AnalizarToken()
@@ -27,38 +48,94 @@ namespace IDE_Proyecto.analizadores
 
             if (index == txtArea.TextLength)
             {
-                //try
-                //{
-                //    int strt = column - 1;
-                //    int length;
-                //    while (strt > 0 && txtArea.Lines[line][strt] != ' ')
-                //    {
-                //        if (txtArea.Lines[line][strt - 1] == ' ')
-                //        {
-                //            break;
-                //        }
-                //        else
-                //            strt--;
-
-                //    }
-                //    length = column - strt;
-                //    Pintar(strt, length);
-                //}
-                //catch (Exception ex)
-                //{
-                //    Console.WriteLine(ex);
-                //}
-
-                //Automata au = new Automata(txtArea.Lines[line].Substring(strt, length));
                 try
                 {
                     int strt = column - 1;
-                    automata.Comprobar(txtArea.Lines[line].Substring(strt, 1));
-                    Console.WriteLine("token: " + txtArea.Lines[line].Substring(strt, 1));
-                    if (automata.Aceptacion)
+                    if (automata.Comprobar(txtArea.Lines[line].Substring(strt, 1)))
                     {
                         Pintar(strt, 1);
                     }
+                    char[] lastLetter = txtArea.Lines[line].Substring(strt, 1).ToCharArray();
+
+                    //Si obtenemos letras, las enviamos al autómata
+                    
+
+                    if (Char.IsLetter(txtArea.Lines[line][strt]))
+                    {
+                        int strt2 = strt;
+                        int length;
+
+                        while (strt2 > 0 && (Char.IsLetter(txtArea.Lines[line][strt2]) || txtArea.Lines[line][strt2] == '_'))
+                        {
+                            if (!Char.IsLetter(txtArea.Lines[line][strt2 - 1]) && txtArea.Lines[line][strt2 - 1] != '_')
+                            {
+                                break;
+                            }
+                            else
+                                strt2--;
+
+                        }
+                        length = column - strt2;
+                        if (automata.Comprobar(txtArea.Lines[line].Substring(strt2, length)));
+                            Pintar(strt2, length);
+                    }
+                    else if(Char.IsNumber(txtArea.Lines[line][strt]) || txtArea.Lines[line][strt] == '.')
+                    {
+                        int strt2 = strt;
+                        int length;
+
+                        while (strt2 > 0 && (Char.IsNumber(txtArea.Lines[line][strt2]) || txtArea.Lines[line][strt2] == '.'))
+                        {
+                            if (!Char.IsNumber(txtArea.Lines[line][strt2 - 1]) && txtArea.Lines[line][strt2 - 1] != '.')
+                            {
+                                break;
+                            }
+                            else
+                                strt2--;
+
+                        }
+                        length = column - strt2;
+                        if (automata.Comprobar(txtArea.Lines[line].Substring(strt2, length))) ;
+                        Pintar(strt2, length);
+                    }
+
+ 
+                    //Obtenemos comentarios
+                    try
+                    {
+
+                        //if (comment == true && txtArea.Lines[line][strt] == '/' && txtArea.Lines[line][strt - 1] == '*')
+                        //{
+                        //    lengthcomment += 2;
+                            
+                        //    Console.WriteLine("Cadena de comentarrio: " + txtArea.Text.Substring(startcomment, lengthcomment));
+
+                            
+
+                        //    if (automata.Comprobar(txtArea.Text.Substring(startcomment, lengthcomment)))
+                        //    {
+                        //        Pintar(startcomment, lengthcomment);
+                        //    }
+
+                        //    comment = false;
+                        //    lengthcomment = 0;
+                        //}
+
+                        //if (txtArea.Lines[line][strt] == '*' && txtArea.Lines[line][strt - 1] == '/')
+                        //{
+                        //    startcomment = column - 2;
+                        //    lengthcomment = 0;
+                        //    comment = true;
+                        //}
+
+                        //if (comment == true)
+                        //{
+                        //    lengthcomment++;
+                        //}
+
+                    }
+                    catch { }
+
                 }
                 catch (Exception ex)
                 {}
@@ -97,6 +174,7 @@ namespace IDE_Proyecto.analizadores
             txtArea.SelectionColor = Color.Black;
  
         }
+
 
     }
 }

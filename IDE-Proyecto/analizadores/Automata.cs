@@ -22,7 +22,7 @@ namespace IDE_Proyecto.analizadores
 
         }
 
-        public void Comprobar(String cadenaIngresada)
+        public bool Comprobar(String cadenaIngresada)
         {
             this.cadenaIngresada = cadenaIngresada;
             longitud = cadenaIngresada.Length;
@@ -33,6 +33,8 @@ namespace IDE_Proyecto.analizadores
 
             Console.WriteLine("\n\nPara la cadena: " + cadenaIngresada);
             Q0();
+
+            return aceptacion;
         }
 
         private void Inicializacion()
