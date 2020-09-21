@@ -207,6 +207,19 @@ namespace IDE_Proyecto.interfazGrafica
         {
             Application.Exit(); //Nos permite salir de la aplicación
         }
+        
+        private void button7_Click(object sender, EventArgs e)
+        {
+            txtLog.Text = "Area Log: " + Environment.NewLine;
+            AnalizadorLog al = new AnalizadorLog();
+            int index = txtArea.SelectionStart;
+            al.Analizar(txtArea, txtLog, index);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void txtArea_KeyPress(object sender, KeyPressEventArgs e)
         {

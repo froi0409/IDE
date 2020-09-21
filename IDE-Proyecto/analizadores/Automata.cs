@@ -237,6 +237,7 @@ namespace IDE_Proyecto.analizadores
             if(cont < longitud)
             {
                 aceptacion = false;
+                color = "Black";
             }
         }
 
