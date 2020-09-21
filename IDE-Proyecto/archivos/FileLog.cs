@@ -11,6 +11,12 @@ namespace IDE_Proyecto.archivos
     class FileLog
     {
 
+        /// <summary>
+        /// Metordo que nos permite crear un archivo .gtE dentro de la carpeta del proyecto
+        /// </summary>
+        /// <param name="ruta">Ubicación de la carpeta del proyecto</param>
+        /// <param name="nombre">Nombre del archivo .gtE</param>
+        /// <param name="txtLog">Instancia el área Log del IDE</param>
         public void Crear(String ruta, String nombre, TextBox txtLog)
         {
             StreamWriter sw = new StreamWriter(ruta + @"\" + nombre + "E");

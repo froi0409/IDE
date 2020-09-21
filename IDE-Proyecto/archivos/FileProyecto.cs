@@ -14,6 +14,10 @@ namespace IDE_Proyecto.archivos
 
         private List<FileCodigoFuente> codigoFuente;
         
+        /// <summary>
+        /// Constructor de la clase.
+        /// Todo objeto de tipo FileProyecto posee un List<FileCodigoFuente> 
+        /// </summary>
         public FileProyecto()
         {
             codigoFuente = new List<FileCodigoFuente>();
@@ -34,6 +38,9 @@ namespace IDE_Proyecto.archivos
 
         }
 
+        /// <summary>
+        /// Obtenemos el List de Codigo Fuente que el proyecto tendrá 
+        /// </summary>
         public List<FileCodigoFuente> ListaCodigoFuente
         {
             get
