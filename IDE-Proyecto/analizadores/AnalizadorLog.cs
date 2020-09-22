@@ -16,6 +16,12 @@ namespace IDE_Proyecto.analizadores
 
         }
 
+        /// <summary>
+        /// Metodo en el que analizamos las expresiones inválidas que han sido ingresadas por el usuario dentro del área de teto
+        /// </summary>
+        /// <param name="txtArea">Instancia del área de Texto del IDE</param>
+        /// <param name="txtLog">Instancia del área Log del IDE</param>
+        /// <param name="index">Posición del cursor</param>
         public void Analizar(RichTextBox txtArea, TextBox txtLog, int index)
         {
 

@@ -6,22 +6,38 @@ using System.Threading.Tasks;
 
 namespace IDE_Proyecto.analizadores
 {
+    /// <summary>
+    /// Clase encargada de manejar todo lo relacionado con la validación o descarte de tokens recibidos
+    /// El autómata ha sido programado por medio de metodos, por lo cual:
+    /// Cada método es un éstado del autómata
+    /// Las transiciones se dan en las condiciones que cada método posee
+    /// </summary>
     class Automata
     {
+
         private int cont, longitud;
         private String cadenaIngresada, color = "Black";
         private String azulOscuro = "RoyalBlue";
         private bool aceptacion;
         private char[] cadena;
         private List<String> PalabrasReservadas;
-
+       
+        /// <summary>
+        /// Constructor del autómata
+        /// </summary>
         public Automata()
         {
             
             Inicializacion();
+            
 
         }
 
+        /// <summary>
+        /// Método encargado de comprobar si el resultado final de las trancisiones entre estados es verdadero
+        /// </summary>
+        /// <param name="cadenaIngresada">token</param>
+        /// <returns></returns>
         public bool Comprobar(String cadenaIngresada)
         {
             this.cadenaIngresada = cadenaIngresada;
@@ -37,6 +53,9 @@ namespace IDE_Proyecto.analizadores
             return aceptacion;
         }
 
+        /// <summary>
+        /// Inicializa las palabras reservadas que tendrá el lenguaje
+        /// </summary>
         private void Inicializacion()
         {
             PalabrasReservadas = new List<String>();

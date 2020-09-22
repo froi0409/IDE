@@ -15,6 +15,10 @@ namespace IDE_Proyecto.archivos
         private String contenido;
         private String nombre;
 
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
+        /// <param name="nombre">Nombre del archivo .gt</param>
         public FileCodigoFuente(String nombre)
         {
             this.nombre = nombre;
@@ -81,6 +85,7 @@ namespace IDE_Proyecto.archivos
             }
 
         }
+
 
         public String Contenido
         {

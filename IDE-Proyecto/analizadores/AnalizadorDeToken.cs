@@ -17,12 +17,19 @@ namespace IDE_Proyecto.analizadores
         private Automata automata = new Automata();
         private bool comment = false, cadena = false;
 
+        /// <summary>
+        /// Constructor de la clase
+        /// </summary>
+        /// <param name="txtArea">Instancia del área de texto del IDE</param>
         public AnalizadorDeToken(RichTextBox txtArea)
         {
             this.txtArea = txtArea;
             Inicialización();
         }
 
+        /// <summary>
+        /// Inicializa aquellos tokens, que son el fin de cadenas de dos caracteres
+        /// </summary>
         private void Inicialización()
         {
             Dobles.Add('|');
@@ -30,6 +37,10 @@ namespace IDE_Proyecto.analizadores
             Dobles.Add('=');
         }
 
+        /// <summary>
+        /// Este método analiza los diferentes tipos de tokens que el usuario puede ingresar
+        /// desde tokens de un caracter, hasta tokens representados por cadenas de caracteres
+        /// </summary>
         public void AnalizarToken()
         {
 
@@ -170,6 +181,9 @@ namespace IDE_Proyecto.analizadores
             }
         }
 
+        /// <summary>
+        /// Actualiza el número de fila y columna en la que se encuentra el cursor, dentro del área de texto
+        /// </summary>
         private void ActualizarDatos()
         {
             index = txtArea.SelectionStart;
@@ -179,6 +193,11 @@ namespace IDE_Proyecto.analizadores
             column = index - firstChar;
         }
 
+        /// <summary>
+        /// Pinta la cadena de caracteres, según las condiciones establecidas por el autómata
+        /// </summary>
+        /// <param name="strt">Hace referencia al inicio de la cadena de caracteres a pintar</param>
+        /// <param name="length">Hace referencia a la longitud de la cadena de caracteres a pintar</param>
         private void Pintar(int strt, int length)
         {
             int apoyo = 0;
