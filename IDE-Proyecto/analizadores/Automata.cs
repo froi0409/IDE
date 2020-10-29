@@ -45,7 +45,6 @@ namespace IDE_Proyecto.analizadores
             cadena = cadenaIngresada.ToCharArray();
             cont = 0;
             aceptacion = false;
-            color = "Black";
 
             Console.WriteLine("\n\nPara la cadena: " + cadenaIngresada);
             Q0();
@@ -66,6 +65,9 @@ namespace IDE_Proyecto.analizadores
             PalabrasReservadas.Add("carácter");
             PalabrasReservadas.Add("verdadero");
             PalabrasReservadas.Add("falso");
+            PalabrasReservadas.Add("principal");
+            PalabrasReservadas.Add("imprimir");
+            PalabrasReservadas.Add("leer");
             PalabrasReservadas.Add("SI");
             PalabrasReservadas.Add("SINO");
             PalabrasReservadas.Add("SINO_SI");
@@ -78,6 +80,8 @@ namespace IDE_Proyecto.analizadores
 
         private void Q0()
         {
+
+            color = "Black";
             Console.WriteLine("Q0");
             aceptacion = false;
             if (cont < longitud)

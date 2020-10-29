@@ -14,6 +14,7 @@ namespace IDE_Proyecto.archivos
 
         private String contenido;
         private String nombre;
+        private RichTextBox txtArea;
 
         /// <summary>
         /// Constructor de la clase
