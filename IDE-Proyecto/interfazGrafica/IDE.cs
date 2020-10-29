@@ -69,8 +69,16 @@ namespace IDE_Proyecto.interfazGrafica
         /// </summary>
         private void IDE_Load(object sender, EventArgs e)
         {
-            txtArea.Text = proyecto.ListaCodigoFuente[0].Contenido;
-            lstArchivos.SelectedIndex = 0;
+            try
+            {
+                txtArea.Text = proyecto.ListaCodigoFuente[0].Contenido;
+                lstArchivos.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ejecutar la aplicación");
+                Application.Exit();
+            }
         }
 
 
@@ -89,6 +97,7 @@ namespace IDE_Proyecto.interfazGrafica
 
             proyecto.ListaCodigoFuente[selectedFile].Contenido = txtArea.Text; //Le asignamos el texto correspondiente al espacio de texto de cada archivo
             selectedFile = lstArchivos.SelectedIndex;
+
 
             txtArea.Text = "";
 
@@ -196,7 +205,6 @@ namespace IDE_Proyecto.interfazGrafica
 
         }
 
-
         /// <summary>
         /// Método que nos sirve para definir el comportamiento del formulario
         /// después de ser cerrado
@@ -268,7 +276,7 @@ namespace IDE_Proyecto.interfazGrafica
 
         private void txtArea_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+             
         }
 
 

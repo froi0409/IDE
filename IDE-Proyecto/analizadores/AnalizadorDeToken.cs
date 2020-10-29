@@ -13,9 +13,9 @@ namespace IDE_Proyecto.analizadores
 
         private RichTextBox txtArea;
         private List<char> Dobles = new List<char>();
-        private int index, line, column, firstChar, startcomment = 0, lengthcomment = 0, startcadena = 0, lengthcadena = 0;
+        private int index, line, column, firstChar;
         private Automata automata = new Automata();
-        private bool comment = false, cadena = false;
+
 
         /// <summary>
         /// Constructor de la clase
@@ -46,139 +46,140 @@ namespace IDE_Proyecto.analizadores
 
             ActualizarDatos();
 
-            if (index == txtArea.TextLength)
+            try
             {
-                try
+                //Enviamos el caracter recién ingresado al autómata para determinar si el mismo es un token válido
+                int strt = column - 1;
+                if (automata.Comprobar(txtArea.Lines[line].Substring(strt, 1)))
                 {
-                    int strt = column - 1;
-                    if (automata.Comprobar(txtArea.Lines[line].Substring(strt, 1)))
-                    {
-                        Pintar(strt, 1);
-                    }
-                    
-                    char[] lastLetter = txtArea.Lines[line].Substring(strt, 1).ToCharArray();
+                    Pintar(strt, 1);
+                }
 
-                    //Si obtenemos letras, las enviamos al autómata
-                    if (Char.IsLetter(txtArea.Lines[line][strt]))
-                    {
-                        int strt2 = strt;
-                        int length;
+                char[] lastLetter = txtArea.Lines[line].Substring(strt, 1).ToCharArray();
 
-                        //Envío de palabras al autómata, strt2 es el inicio de la cadena
-                        while (strt2 > 0 && (Char.IsLetter(txtArea.Lines[line][strt2]) || txtArea.Lines[line][strt2] == '_'))
+
+                //A continuación enviaremos los tokens que forman parte de cadenas de caracteres
+                //Si obtenemos letras, las enviamos al autómata
+                if (Char.IsLetter(txtArea.Lines[line][strt]))
+                {
+                    int strt2 = strt;
+                    int length;
+
+                    //Envío de palabras al autómata, strt2 es el inicio de la cadena
+                    while (strt2 > 0 && (Char.IsLetter(txtArea.Lines[line][strt2]) || txtArea.Lines[line][strt2] == '_'))
+                    {
+                        if (!Char.IsLetter(txtArea.Lines[line][strt2 - 1]) && txtArea.Lines[line][strt2 - 1] != '_')
                         {
-                            if (!Char.IsLetter(txtArea.Lines[line][strt2 - 1]) && txtArea.Lines[line][strt2 - 1] != '_')
-                            {
-                                break;
-                            }
-                            else
-                                strt2--;
-
+                            break;
                         }
-                        length = column - strt2;
-                        if (automata.Comprobar(txtArea.Lines[line].Substring(strt2, length)))
-                            Pintar(strt2, length);
+                        else
+                            strt2--;
+
                     }
-                    else if (Char.IsNumber(txtArea.Lines[line][strt]) || txtArea.Lines[line][strt] == '.')
-                    {
-                        int strt2 = strt;
-                        int length;
-
-                        //Envío de números (enteros y decimales) al autómata, strt2 es el inicio de la cadena
-                        while (strt2 > 0 && (Char.IsNumber(txtArea.Lines[line][strt2]) || txtArea.Lines[line][strt2] == '.'))
-                        {
-                            if (!Char.IsNumber(txtArea.Lines[line][strt2 - 1]) && txtArea.Lines[line][strt2 - 1] != '.')
-                            {
-                                break;
-                            }
-                            else
-                                strt2--;
-                        }
-                        length = column - strt2;
-                        automata.Comprobar(txtArea.Lines[line].Substring(strt2, length));
+                    length = column - strt2;
+                    if (automata.Comprobar(txtArea.Lines[line].Substring(strt2, length)))
                         Pintar(strt2, length);
-                    }
-                    else if (strt > 0 && Dobles.Contains(txtArea.Lines[line][strt]))
-                    {
-                        //Envío de cadenas de dos caracteres (ej: ==, <=, etc) al autómata, strt2 es el inicio de la cadena
-                        Console.WriteLine("Cadena: " + txtArea.Lines[line].Substring(strt - 1, 2));
-                        if (automata.Comprobar(txtArea.Lines[line].Substring(strt - 1, 2)))
-                            Pintar(strt - 1, 2);
-                    }
-                    else if (txtArea.Lines[line][strt] == '+')
-                    {
-                        int strt2 = strt;
-                        int length;
+                }
+                else if (Char.IsNumber(txtArea.Lines[line][strt]) || txtArea.Lines[line][strt] == '.')
+                {
+                    int strt2 = strt;
+                    int length;
 
-                        //Envío de cadenas de signo + al autómata, strt2 es el inicio de la cadena
-                        while (strt2 > 0 && txtArea.Lines[line][strt2] == '+')
+                    //Envío de números (enteros y decimales) al autómata, strt2 es el inicio de la cadena
+                    while (strt2 > 0 && (Char.IsNumber(txtArea.Lines[line][strt2]) || txtArea.Lines[line][strt2] == '.'))
+                    {
+                        if (!Char.IsNumber(txtArea.Lines[line][strt2 - 1]) && txtArea.Lines[line][strt2 - 1] != '.')
                         {
-                            if (txtArea.Lines[line][strt2 - 1] != '+')
-                            {
-                                break;
-                            }
-                            else
-                                strt2--;
+                            break;
                         }
-                        length = column - strt2;
-                        automata.Comprobar(txtArea.Lines[line].Substring(strt2, length));
-                        Pintar(strt2, length);
+                        else
+                            strt2--;
                     }
-                    else if (txtArea.Lines[line][strt] == '-')
-                    {
-                        int strt2 = strt;
-                        int length;
+                    length = column - strt2;
+                    automata.Comprobar(txtArea.Lines[line].Substring(strt2, length));
+                    Pintar(strt2, length);
+                }
+                else if (strt > 0 && Dobles.Contains(txtArea.Lines[line][strt]))
+                {
+                    //Envío de cadenas de dos caracteres (ej: ==, <=, etc) al autómata, strt2 es el inicio de la cadena
+                    Console.WriteLine("Cadena: " + txtArea.Lines[line].Substring(strt - 1, 2));
+                    if (automata.Comprobar(txtArea.Lines[line].Substring(strt - 1, 2)))
+                        Pintar(strt - 1, 2);
+                }
+                else if (txtArea.Lines[line][strt] == '+')
+                {
+                    int strt2 = strt;
+                    int length;
 
-                        //Envío de cadenas de signo - al autómata, strt2 es el inicio de la cadena
-                        while (strt2 > 0 && txtArea.Lines[line][strt2] == '-')
+                    //Envío de cadenas de signo + al autómata, strt2 es el inicio de la cadena
+                    while (strt2 > 0 && txtArea.Lines[line][strt2] == '+')
+                    {
+                        if (txtArea.Lines[line][strt2 - 1] != '+')
                         {
-                            if (txtArea.Lines[line][strt2 - 1] != '-')
-                            {
-                                break;
-                            }
-                            else
-                                strt2--;
+                            break;
                         }
-                        length = column - strt2;
-                        automata.Comprobar(txtArea.Lines[line].Substring(strt2, length));
-                        Pintar(strt2, length);
+                        else
+                            strt2--;
                     }
-                    else if (txtArea.Lines[line][strt] == '"')
-                    {
-                        int strt2 = strt;
-                        int length;
+                    length = column - strt2;
+                    automata.Comprobar(txtArea.Lines[line].Substring(strt2, length));
+                    Pintar(strt2, length);
+                }
+                else if (txtArea.Lines[line][strt] == '-')
+                {
+                    int strt2 = strt;
+                    int length;
 
-                        //Envío de cadenas de caracteres - al autómata, strt2 es el inicio de la cadena
+                    //Envío de cadenas de signo - al autómata, strt2 es el inicio de la cadena
+                    while (strt2 > 0 && txtArea.Lines[line][strt2] == '-')
+                    {
+                        if (txtArea.Lines[line][strt2 - 1] != '-')
+                        {
+                            break;
+                        }
+                        else
+                            strt2--;
+                    }
+                    length = column - strt2;
+                    automata.Comprobar(txtArea.Lines[line].Substring(strt2, length));
+                    Pintar(strt2, length);
+                }
+                else if (txtArea.Lines[line][strt] == '"')
+                {
+                    int strt2 = strt;
+                    int length;
+
+                    //Envío de cadenas de caracteres - al autómata, strt2 es el inicio de la cadena
+                    do
+                    {
+                        strt2--;
+                    } while (strt2 > 0 && txtArea.Lines[line][strt2] != '"');
+                    length = column - strt2;
+                    if (automata.Comprobar(txtArea.Lines[line].Substring(strt2, length)))
+                        Pintar(strt2, length);
+                }
+                else if (txtArea.Lines[line][strt] == '/' && txtArea.Lines[line][strt - 1] == '*')
+                {
+                    int strt2 = strt;
+                    int length;
+
+                    //Envío de cadenas de caracteres - al autómata, strt2 es el inicio de la cadena
+                    do
+                    {
                         do
                         {
                             strt2--;
-                        } while (strt2 > 0 && txtArea.Lines[line][strt2] != '"');
-                        length = column - strt2;
-                        if(automata.Comprobar(txtArea.Lines[line].Substring(strt2, length)))
-                            Pintar(strt2, length);
-                    }
-                    else if (txtArea.Lines[line][strt] == '/' && txtArea.Lines[line][strt-1] == '*')
-                    {
-                        int strt2 = strt;
-                        int length;
-
-                        //Envío de cadenas de caracteres - al autómata, strt2 es el inicio de la cadena
-                        do
-                        {
-                            do
-                            {
-                                strt2--;
-                            } while (strt2 > 0 && txtArea.Lines[line][strt2] != '/');
-                        } while (txtArea.Lines[line][strt2 + 1] != '*');
-                        length = column - strt2;
-                        automata.Comprobar(txtArea.Lines[line].Substring(strt2, length));
-                        Pintar(strt2, length);
-                    }
-
+                        } while (strt2 > 0 && txtArea.Lines[line][strt2] != '/');
+                    } while (txtArea.Lines[line][strt2 + 1] != '*');
+                    length = column - strt2;
+                    automata.Comprobar(txtArea.Lines[line].Substring(strt2, length));
+                    Pintar(strt2, length);
                 }
-                catch (Exception ex)
-                {}
+
             }
+            catch (Exception ex)
+            { }
+
         }
 
         /// <summary>
