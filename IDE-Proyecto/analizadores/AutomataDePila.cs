@@ -8,5 +8,8 @@ namespace IDE_Proyecto.analizadores
 {
     class AutomataDePila
     {
+
+
+
     }
 }

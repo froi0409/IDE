@@ -47,9 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="analizadores\AnalizadorDeToken.cs" />
-    <Compile Include="analizadores\AnalizadorLog.cs" />
     <Compile Include="analizadores\Automata.cs" />
+    <Compile Include="analizadores\AutomataDePila.cs" />
+    <Compile Include="analizadores\IdentificadoresTabla.cs" />
     <Compile Include="analizadores\SeparaTokens.cs" />
+    <Compile Include="analizadores\TablaAnalisisSintactico.cs" />
     <Compile Include="analizadores\Token.cs" />
     <Compile Include="archivos\FileCodigoFuente.cs" />
     <Compile Include="archivos\FileLog.cs" />
