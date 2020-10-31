@@ -218,10 +218,35 @@ namespace IDE_Proyecto.interfazGrafica
         
         private void button7_Click(object sender, EventArgs e)
         {
+            button5_Click(sender, e);
             txtLog.Text = "Area Log: " + Environment.NewLine;
             AnalizadorLog al = new AnalizadorLog();
             int index = txtArea.SelectionStart;
             al.Analizar(txtArea, txtLog, index);
+
+            for (int i = 0; i < analizadorToken.ListaTokens.Count - 1; i++)
+            {
+                Console.WriteLine("Linea: " + analizadorToken.ListaTokens[i].ToString() + "   Columna: " + analizadorToken.ListaTokens[i].ToString() + "   Tipo: " + analizadorToken.ListaTokens[i].Tipo);
+            }
+
+            Console.WriteLine("----------------------------------------------------------------");
+
+            for (int i = 0; i < txtArea.Text.Length; i++)
+            {
+                Console.WriteLine(i + ": " + txtArea.Text[i]);
+                
+            }
+
+            SeparaTokens separaTokens = new SeparaTokens();
+            separaTokens.SepararTokens(txtArea);
+
+            Console.WriteLine("\n\n\n--------------------------------------------");
+
+            foreach(String element in separaTokens.ListaTokens)
+            {
+                Console.WriteLine("Token" + element);
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -15,6 +15,7 @@ namespace IDE_Proyecto.analizadores
         private List<char> Dobles = new List<char>();
         private int index, line, column, firstChar;
         private Automata automata = new Automata();
+        private List<Token> tokens = new List<Token>();
 
 
         /// <summary>
@@ -53,6 +54,7 @@ namespace IDE_Proyecto.analizadores
                 if (automata.Comprobar(txtArea.Lines[line].Substring(strt, 1)))
                 {
                     Pintar(strt, 1);
+                    tokens.Add(new Token(automata.TipoToken, strt, column));
                 }
 
                 char[] lastLetter = txtArea.Lines[line].Substring(strt, 1).ToCharArray();
@@ -202,7 +204,7 @@ namespace IDE_Proyecto.analizadores
         private void Pintar(int strt, int length)
         {
             int apoyo = 0;
-            
+
             if (txtArea.Lines.Length == 1)
                 txtArea.Select(strt, length);
             else
@@ -219,7 +221,15 @@ namespace IDE_Proyecto.analizadores
             txtArea.SelectionStart = index;
             txtArea.SelectionLength = 0;
             txtArea.SelectionColor = Color.Black;
- 
+
+        } 
+
+        public List<Token> ListaTokens
+        {
+            get
+            {
+                return tokens;
+            }
         }
 
     }

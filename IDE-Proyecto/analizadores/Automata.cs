@@ -16,6 +16,7 @@ namespace IDE_Proyecto.analizadores
     {
 
         private int cont, longitud;
+        private String tipoToken;
         private String cadenaIngresada, color = "Black";
         private String azulOscuro = "RoyalBlue";
         private bool aceptacion;
@@ -30,7 +31,6 @@ namespace IDE_Proyecto.analizadores
             
             Inicializacion();
             
-
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace IDE_Proyecto.analizadores
             cadena = cadenaIngresada.ToCharArray();
             cont = 0;
             aceptacion = false;
-
+            tipoToken = "";
             Console.WriteLine("\n\nPara la cadena: " + cadenaIngresada);
             Q0();
 
@@ -107,8 +107,9 @@ namespace IDE_Proyecto.analizadores
                     cont++;
                     Q4();
                 }
-                else if (cadena[cont] == '*' || cadena[cont] == '(' || cadena[cont] == ')' || cadena[cont] == ';') //por el momento omitimos la transición char
+                else if (cadena[cont] == '^' || cadena[cont] == '*' || cadena[cont] == '(' || cadena[cont] == ')' || cadena[cont] == '{' || cadena[cont] == '}' || cadena[cont] == ';') //por el momento omitimos la transición char
                 {
+                    tipoToken = cadena[cont].ToString();
                     if (cadena[cont] != ';')
                     {
                         color = azulOscuro;
@@ -157,10 +158,15 @@ namespace IDE_Proyecto.analizadores
                     cont++;
                     Q10();
                 }
-                else if (Char.IsLetter(cadena[cont]) || cadena[cont] == '_')
+                else if (Char.IsLetter(cadena[cont]))
                 {
                     cont++;
                     Q11();
+                }
+                else if (cadena[cont] == '_')
+                {
+                    cont++;
+                    Q18();
                 }
             }
         }
@@ -228,6 +234,7 @@ namespace IDE_Proyecto.analizadores
                 }
                 else if (cad == 34)
                 {
+                    tipoToken = "cadena";
                     cont++;
                     Q5();
                 }
@@ -468,6 +475,33 @@ namespace IDE_Proyecto.analizadores
                     cont++;
                     Q5();
                 }
+            }
+        }
+
+        private void Q18()
+        {
+            Console.WriteLine("Q18");
+            aceptacion = true;
+            color = "DarkSeaGreen";
+            if(cont < longitud)
+            {
+                if (!Char.IsLetter(cadena[cont]))
+                {
+                    aceptacion = false;
+                    color = "Black";
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+        public String TipoToken
+        {
+            get
+            {
+                return tipoToken;
             }
         }
 
