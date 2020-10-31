@@ -129,6 +129,7 @@ namespace IDE_Proyecto.analizadores
                 }
                 else if (cadena[cont] == '=' || cadena[cont] == '!')
                 {
+                    tipoToken = cadena[cont].ToString();
                     if (cadena[cont] == '=')
                     {
                         color = "HotPink";
@@ -176,6 +177,7 @@ namespace IDE_Proyecto.analizadores
             Console.WriteLine("Q1");
             aceptacion = true;
             color = azulOscuro;
+            tipoToken = "-";
             if (cont < longitud)
             {
                 if (Char.IsNumber(cadena[cont]))
@@ -185,6 +187,7 @@ namespace IDE_Proyecto.analizadores
                 }
                 else if (cadena[cont] == '-')
                 {
+                    tipoToken = "--";
                     cont++;
                     Q5();
                 }
@@ -200,6 +203,7 @@ namespace IDE_Proyecto.analizadores
             Console.WriteLine("Q2");
             aceptacion = true;
             color = "BlueViolet";
+            tipoToken = "Num";
             if (cont < longitud)
             {
                 if (Char.IsNumber(cadena[cont]))
@@ -246,10 +250,12 @@ namespace IDE_Proyecto.analizadores
             Console.WriteLine("Q4");
             aceptacion = true;
             color = azulOscuro;
+            tipoToken = "+";
             if (cont < longitud)
             {
                 if (cadena[cont] == '+')
                 {
+                    tipoToken = "++";
                     cont++;
                     Q5();
                 }
@@ -317,6 +323,7 @@ namespace IDE_Proyecto.analizadores
         {
             Console.WriteLine("Q8");
             aceptacion = true;
+            tipoToken = "OpRel";
             if (cont < longitud)
             {
                 if (cadena[cont] == '=')
@@ -339,6 +346,7 @@ namespace IDE_Proyecto.analizadores
             {
                 if (cadena[cont] == '|')
                 {
+                    tipoToken = "OpLogico";
                     cont++;
                     Q5();
                 }
@@ -353,6 +361,7 @@ namespace IDE_Proyecto.analizadores
             {
                 if (cadena[cont] == '&')
                 {
+                    tipoToken = "OpLogico";
                     cont++;
                     Q5();
                 }
@@ -362,7 +371,6 @@ namespace IDE_Proyecto.analizadores
         private void Q11()
         {
             Console.WriteLine("Q11");
-            aceptacion = true;
             if (cont < longitud)
             {
                 if (Char.IsLetter(cadena[cont]) || cadena[cont] == '_')
@@ -382,10 +390,23 @@ namespace IDE_Proyecto.analizadores
                     if (element.Equals(cadenaIngresada))
                     {
                         color = "Green";
+                        tipoToken = "PR" + cadenaIngresada;
+
+                        if(cadenaIngresada.Equals("entero") || cadenaIngresada.Equals("decimal") || cadenaIngresada.Equals("cadena") || cadenaIngresada.Equals("booleano") || cadenaIngresada.Equals("carácter"))
+                        {
+                            tipoToken = "PRDatoPrimi";
+                        }
                         if(element.Equals("verdadero") || element.Equals("falso"))
                         {
                             color = "DarkOrange";
+                            tipoToken = "PRBooleana";
                         }
+                        aceptacion = true;
+                        break;
+                    }
+                    else
+                    {
+                        aceptacion = false;
                     }
                 }
             }
@@ -429,6 +450,7 @@ namespace IDE_Proyecto.analizadores
             Console.WriteLine("Q15");
             aceptacion = true;
             color = "LightSkyBlue";
+            tipoToken = "Num";
             if(cont < longitud)
             {
                 if (Char.IsNumber(cadena[cont]))
@@ -483,9 +505,10 @@ namespace IDE_Proyecto.analizadores
             Console.WriteLine("Q18");
             aceptacion = true;
             color = "DarkSeaGreen";
+            tipoToken = "TokId";
             if(cont < longitud)
             {
-                if (!Char.IsLetter(cadena[cont]))
+                if (!Char.IsLetterOrDigit(cadena[cont]))
                 {
                     aceptacion = false;
                     color = "Black";

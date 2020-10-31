@@ -31,9 +31,22 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.proyectoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.archivoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.proyectoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.archivoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.guardarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblPosicion = new System.Windows.Forms.Label();
             this.lblNombreProyecto = new System.Windows.Forms.Label();
@@ -44,21 +57,8 @@
             this.txtArea = new System.Windows.Forms.RichTextBox();
             this.txtNumeracion = new System.Windows.Forms.RichTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtLog = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.proyectoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.archivoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.proyectoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.archivoToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.guardarComoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtLog = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -99,8 +99,24 @@
             this.proyectoToolStripMenuItem,
             this.archivoToolStripMenuItem1});
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
+            // 
+            // proyectoToolStripMenuItem
+            // 
+            this.proyectoToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.folder_opt1;
+            this.proyectoToolStripMenuItem.Name = "proyectoToolStripMenuItem";
+            this.proyectoToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
+            this.proyectoToolStripMenuItem.Text = "Proyecto";
+            this.proyectoToolStripMenuItem.Click += new System.EventHandler(this.proyectoToolStripMenuItem_Click);
+            // 
+            // archivoToolStripMenuItem1
+            // 
+            this.archivoToolStripMenuItem1.Image = global::IDE_Proyecto.Properties.Resources.notepad_opt;
+            this.archivoToolStripMenuItem1.Name = "archivoToolStripMenuItem1";
+            this.archivoToolStripMenuItem1.Size = new System.Drawing.Size(150, 26);
+            this.archivoToolStripMenuItem1.Text = "Archivo";
+            this.archivoToolStripMenuItem1.Click += new System.EventHandler(this.archivoToolStripMenuItem1_Click);
             // 
             // abrirToolStripMenuItem
             // 
@@ -108,13 +124,44 @@
             this.proyectoToolStripMenuItem1,
             this.archivoToolStripMenuItem2});
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
             this.abrirToolStripMenuItem.Text = "Abrir";
+            // 
+            // proyectoToolStripMenuItem1
+            // 
+            this.proyectoToolStripMenuItem1.Image = global::IDE_Proyecto.Properties.Resources.folder_3_opt1;
+            this.proyectoToolStripMenuItem1.Name = "proyectoToolStripMenuItem1";
+            this.proyectoToolStripMenuItem1.Size = new System.Drawing.Size(150, 26);
+            this.proyectoToolStripMenuItem1.Text = "Proyecto";
+            this.proyectoToolStripMenuItem1.Click += new System.EventHandler(this.proyectoToolStripMenuItem1_Click);
+            // 
+            // archivoToolStripMenuItem2
+            // 
+            this.archivoToolStripMenuItem2.Image = global::IDE_Proyecto.Properties.Resources.notepad_3_opt1;
+            this.archivoToolStripMenuItem2.Name = "archivoToolStripMenuItem2";
+            this.archivoToolStripMenuItem2.Size = new System.Drawing.Size(150, 26);
+            this.archivoToolStripMenuItem2.Text = "Archivo";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
+            // 
+            // guardarToolStripMenuItem
+            // 
+            this.guardarToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.flexible_opt;
+            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
+            // 
+            // guardarComoToolStripMenuItem
+            // 
+            this.guardarComoToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.guardar_el_archivo__2__opt;
+            this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.guardarComoToolStripMenuItem.Text = "Guardar Todo";
+            this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.guardarComoToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -132,6 +179,107 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1110, 30);
             this.panel1.TabIndex = 1;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Image = global::IDE_Proyecto.Properties.Resources.jugar__2__opt;
+            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.Location = new System.Drawing.Point(219, -2);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(112, 32);
+            this.button7.TabIndex = 6;
+            this.button7.Text = "Compilar";
+            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button6.BackgroundImage = global::IDE_Proyecto.Properties.Resources.guardar_el_archivo__2__opt;
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Location = new System.Drawing.Point(183, 0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(30, 30);
+            this.button6.TabIndex = 5;
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button5.BackgroundImage = global::IDE_Proyecto.Properties.Resources.flexible_opt;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Location = new System.Drawing.Point(147, 0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(30, 30);
+            this.button5.TabIndex = 4;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button4.BackgroundImage = global::IDE_Proyecto.Properties.Resources.notepad_3_opt1;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Location = new System.Drawing.Point(111, 0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(30, 30);
+            this.button4.TabIndex = 3;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button3.BackgroundImage = global::IDE_Proyecto.Properties.Resources.notepad_opt1;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Location = new System.Drawing.Point(75, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(30, 30);
+            this.button3.TabIndex = 2;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button2.BackgroundImage = global::IDE_Proyecto.Properties.Resources.folder_3_opt1;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(39, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(30, 30);
+            this.button2.TabIndex = 1;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::IDE_Proyecto.Properties.Resources.folder_opt1;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(3, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 30);
+            this.button1.TabIndex = 0;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -260,20 +408,6 @@
             this.panel3.Size = new System.Drawing.Size(1110, 156);
             this.panel3.TabIndex = 4;
             // 
-            // txtLog
-            // 
-            this.txtLog.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtLog.Font = new System.Drawing.Font("Microsoft Tai Le", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLog.Location = new System.Drawing.Point(0, 0);
-            this.txtLog.MaxLength = 3276721;
-            this.txtLog.Multiline = true;
-            this.txtLog.Name = "txtLog";
-            this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.txtLog.Size = new System.Drawing.Size(1110, 156);
-            this.txtLog.TabIndex = 0;
-            this.txtLog.Text = "Area Log:";
-            // 
             // button8
             // 
             this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -293,153 +427,16 @@
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
-            // button7
+            // txtLog
             // 
-            this.button7.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Image = global::IDE_Proyecto.Properties.Resources.jugar__2__opt;
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.Location = new System.Drawing.Point(219, -2);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(112, 32);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "Compilar";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button6.BackgroundImage = global::IDE_Proyecto.Properties.Resources.guardar_el_archivo__2__opt;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(183, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(30, 30);
-            this.button6.TabIndex = 5;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button5.BackgroundImage = global::IDE_Proyecto.Properties.Resources.flexible_opt;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(147, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(30, 30);
-            this.button5.TabIndex = 4;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button4
-            // 
-            this.button4.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button4.BackgroundImage = global::IDE_Proyecto.Properties.Resources.notepad_3_opt1;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(111, 0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(30, 30);
-            this.button4.TabIndex = 3;
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button3.BackgroundImage = global::IDE_Proyecto.Properties.Resources.notepad_opt1;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(75, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(30, 30);
-            this.button3.TabIndex = 2;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.button2.BackgroundImage = global::IDE_Proyecto.Properties.Resources.folder_3_opt1;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(39, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 30);
-            this.button2.TabIndex = 1;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::IDE_Proyecto.Properties.Resources.folder_opt1;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(3, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // proyectoToolStripMenuItem
-            // 
-            this.proyectoToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.folder_opt1;
-            this.proyectoToolStripMenuItem.Name = "proyectoToolStripMenuItem";
-            this.proyectoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.proyectoToolStripMenuItem.Text = "Proyecto";
-            this.proyectoToolStripMenuItem.Click += new System.EventHandler(this.proyectoToolStripMenuItem_Click);
-            // 
-            // archivoToolStripMenuItem1
-            // 
-            this.archivoToolStripMenuItem1.Image = global::IDE_Proyecto.Properties.Resources.notepad_opt;
-            this.archivoToolStripMenuItem1.Name = "archivoToolStripMenuItem1";
-            this.archivoToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.archivoToolStripMenuItem1.Text = "Archivo";
-            this.archivoToolStripMenuItem1.Click += new System.EventHandler(this.archivoToolStripMenuItem1_Click);
-            // 
-            // proyectoToolStripMenuItem1
-            // 
-            this.proyectoToolStripMenuItem1.Image = global::IDE_Proyecto.Properties.Resources.folder_3_opt1;
-            this.proyectoToolStripMenuItem1.Name = "proyectoToolStripMenuItem1";
-            this.proyectoToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.proyectoToolStripMenuItem1.Text = "Proyecto";
-            this.proyectoToolStripMenuItem1.Click += new System.EventHandler(this.proyectoToolStripMenuItem1_Click);
-            // 
-            // archivoToolStripMenuItem2
-            // 
-            this.archivoToolStripMenuItem2.Image = global::IDE_Proyecto.Properties.Resources.notepad_3_opt1;
-            this.archivoToolStripMenuItem2.Name = "archivoToolStripMenuItem2";
-            this.archivoToolStripMenuItem2.Size = new System.Drawing.Size(150, 26);
-            this.archivoToolStripMenuItem2.Text = "Archivo";
-            // 
-            // guardarToolStripMenuItem
-            // 
-            this.guardarToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.flexible_opt;
-            this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
-            this.guardarToolStripMenuItem.Text = "Guardar";
-            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
-            // 
-            // guardarComoToolStripMenuItem
-            // 
-            this.guardarComoToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.guardar_el_archivo__2__opt;
-            this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
-            this.guardarComoToolStripMenuItem.Text = "Guardar Todo";
-            this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.guardarComoToolStripMenuItem_Click);
+            this.txtLog.BackColor = System.Drawing.SystemColors.Menu;
+            this.txtLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLog.Location = new System.Drawing.Point(0, 0);
+            this.txtLog.Name = "txtLog";
+            this.txtLog.Size = new System.Drawing.Size(1110, 156);
+            this.txtLog.TabIndex = 8;
+            this.txtLog.Text = "";
             // 
             // IDE
             // 
@@ -468,7 +465,6 @@
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -503,9 +499,9 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Label lblNombreProyecto;
-        private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label lblPosicion;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.RichTextBox txtLog;
     }
 }

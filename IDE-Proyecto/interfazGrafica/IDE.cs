@@ -220,9 +220,9 @@ namespace IDE_Proyecto.interfazGrafica
         {
             button5_Click(sender, e);
             txtLog.Text = "Area Log: " + Environment.NewLine;
-            AnalizadorLog al = new AnalizadorLog();
-            int index = txtArea.SelectionStart;
-            al.Analizar(txtArea, txtLog, index);
+            //AnalizadorLog al = new AnalizadorLog();
+            //int index = txtArea.SelectionStart;
+            //al.Analizar(txtArea, txtLog, index);
 
             for (int i = 0; i < analizadorToken.ListaTokens.Count - 1; i++)
             {
@@ -238,13 +238,13 @@ namespace IDE_Proyecto.interfazGrafica
             }
 
             SeparaTokens separaTokens = new SeparaTokens();
-            separaTokens.SepararTokens(txtArea);
+            separaTokens.SepararTokens(txtArea, txtLog);
 
             Console.WriteLine("\n\n\n--------------------------------------------");
 
             foreach(String element in separaTokens.ListaTokens)
             {
-                Console.WriteLine("Token" + element);
+                Console.WriteLine("Token: " + element);
             }
 
         }
