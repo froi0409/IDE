@@ -40,27 +40,37 @@ namespace IDE_Proyecto.analizadores
                 }
 
                 //si los ultimos elementos de ambas listas son iguales, se eliminan
-                if (pila[pila.Count-1].Equals(entrada[entrada.Count-1]) || entrada[entrada.Count - 1] == "e")
+                if (pila[pila.Count-1].Equals(entrada[entrada.Count - 1]))
                 {
 
-                    pila.Remove(pila[pila.Count - 1]);
-                    entrada.Remove(entrada[entrada.Count - 1]);
+                    pila.RemoveAt(pila.Count - 1);
+                    entrada.RemoveAt(entrada.Count - 1);
 
+                }
+                else if (pila[pila.Count - 1].Equals("e"))
+                {
+                    pila.RemoveAt(pila.Count - 1);
                 }
                 else //Se busca en la tabla los reemplazos para el último en la pila
                 {
                     String noTerminal = pila[pila.Count - 1];
-                    pila.Remove(pila[pila.Count - 1]);
+                    pila.RemoveAt(pila.Count - 1);
                     int cont = 0;
 
                     int fila = Array.IndexOf(find.Fila, noTerminal);
                     int columna = Array.IndexOf(find.Columna, entrada[entrada.Count - 1]);
                     //Console.WriteLine("\n\nFila: " + fila + "   Columna: " + columna);
-
-                    foreach(String element in tas.Tabla[fila,columna])
+                    try
                     {
-                        pila.Add(element);
-                        cont++;
+                        foreach (String element in tas.Tabla[fila, columna])
+                        {
+                            pila.Add(element);
+                            cont++;
+                        }
+                    }
+                    catch (IndexOutOfRangeException ex)
+                    {
+                        comprobante = false;
                     }
 
                     if(cont == 0)

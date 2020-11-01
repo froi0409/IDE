@@ -308,6 +308,7 @@ namespace IDE_Proyecto.analizadores
             {
                 if (cadena[cont] == '=')
                 {
+                    tipoToken = "OpRel";
                     color = azulOscuro;
                     cont++;
                     Q5();

@@ -91,10 +91,10 @@ namespace IDE_Proyecto.analizadores
             tabla[9, 1].Add("Suma");
             tabla[9, 6].Add("Suma");
             tabla[9, 11].Add("cadena");
-            tabla[9, 12].Add("booleano");
             tabla[9, 13].Add("char");
             tabla[9, 14].Add("Suma");
             tabla[9, 17].Add("Suma");
+            tabla[9, 28].Add("PRBooleana");
 
             tabla[10, 1].Add("Suma'");
             tabla[10, 1].Add("Multi");
@@ -201,9 +201,9 @@ namespace IDE_Proyecto.analizadores
             tabla[24, 22].Add("DescCondicion");
             tabla[24, 22].Add("PRSI");
 
-            tabla[25, 1].Add("ValCondicion");
             tabla[25, 1].Add("CuerpoDescCond");
-
+            tabla[25, 1].Add("ValCondicion");
+            
             tabla[26, 3].Add("Texto");
             tabla[26, 3].Add("{");
 
@@ -239,6 +239,9 @@ namespace IDE_Proyecto.analizadores
             tabla[29, 17].Add("CondicionantePlus");
             tabla[29, 17].Add("Condicionante");
             tabla[29, 17].Add("SigDif");
+            tabla[29, 28].Add("CondicionantePlus");
+            tabla[29, 28].Add("Condicionante");
+            tabla[29, 28].Add("SigDif");
             tabla[29, 29].Add("CondicionantePlus");
             tabla[29, 29].Add("Condicionante");
             tabla[29, 29].Add("SigDif");
@@ -255,11 +258,13 @@ namespace IDE_Proyecto.analizadores
             tabla[30, 17].Add("Suma");
             tabla[30, 17].Add("OpRel");
             tabla[30, 17].Add("Suma");
+            tabla[30, 28].Add("PRBooleana");
 
             tabla[31, 1].Add("e");
             tabla[31, 6].Add("e");
             tabla[31, 14].Add("e");
             tabla[31, 17].Add("e");
+            tabla[31, 28].Add("e");
             tabla[31, 29].Add("SigDif");
             tabla[31, 29].Add("!");
 
@@ -271,7 +276,7 @@ namespace IDE_Proyecto.analizadores
             tabla[33, 31].Add("ValCondicion");
             tabla[33, 31].Add("PRMIENTRAS");
 
-            tabla[34, 30].Add("VaCondicion");
+            tabla[34, 30].Add("ValCondicion");
             tabla[34, 30].Add("DescCicloHM");
 
             tabla[35, 30].Add("PRMIENTRAS");
