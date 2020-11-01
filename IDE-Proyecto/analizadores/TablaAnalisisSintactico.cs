@@ -13,12 +13,29 @@ namespace IDE_Proyecto.analizadores
 
         public TablaAnalisisSintactico()
         {
+            inicializarTabla();
+        }
 
+        public List<String>[,] Tabla
+        {
+            get
+            {
+                return tabla;
+            }
         }
 
         private void inicializarTabla()
         {
-            tabla[0, 0].Add("$");
+
+            for(int i = 0; i < 43; i++)
+            {
+                for(int j = 0; j < 36; j++)
+                {
+                    tabla[i, j] = new List<String>();
+                }
+            }
+
+            
             tabla[0, 0].Add("Texto");
             tabla[0, 0].Add("SimboloInicial");
             tabla[0, 0].Add("PRprincipal");
@@ -27,6 +44,7 @@ namespace IDE_Proyecto.analizadores
             tabla[1, 1].Add(")");
             tabla[1, 1].Add("(");
 
+            tabla[2, 4].Add("}");
             tabla[2, 5].Add("Texto");
             tabla[2, 5].Add("VariablesL");
             tabla[2, 6].Add("Texto");
