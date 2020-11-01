@@ -52,7 +52,7 @@ namespace IDE_Proyecto.analizadores
             tabla[2, 15].Add("Texto");
             tabla[2, 15].Add("Impresion");
             tabla[2, 21].Add("Texto");
-            tabla[2, 21].Add("Lectur");
+            tabla[2, 21].Add("Lectura");
             tabla[2, 22].Add("Texto");
             tabla[2, 22].Add("Condicion");
             tabla[2, 30].Add("Texto");
