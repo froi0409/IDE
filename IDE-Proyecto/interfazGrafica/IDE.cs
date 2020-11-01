@@ -73,6 +73,7 @@ namespace IDE_Proyecto.interfazGrafica
             {
                 txtArea.Text = proyecto.ListaCodigoFuente[0].Contenido;
                 lstArchivos.SelectedIndex = 0;
+            
             }
             catch (Exception ex)
             {
@@ -110,6 +111,8 @@ namespace IDE_Proyecto.interfazGrafica
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
             coordenadas();
+
+
 
             //Condicion que nos sirve para verificar si hay alguna linea adicional
             int cantLineasRT = txtArea.Lines.Length;
@@ -225,6 +228,7 @@ namespace IDE_Proyecto.interfazGrafica
             separaTokens.SepararTokens(txtArea, txtLog);
             separaTokens.ListaTokens.Add("$");
             separaTokens.ListaTokens.Reverse();
+            separaTokens.TokensApoyo.Reverse();
 
             Console.WriteLine("\n\n\n--------------------------------------------");
 
@@ -233,8 +237,8 @@ namespace IDE_Proyecto.interfazGrafica
                 Console.WriteLine("Token: " + element);
             }
 
-            AutomataDePila automataPila = new AutomataDePila(separaTokens.ListaTokens);
-            if (automataPila.verificarSintaxis())
+            AutomataDePila automataPila = new AutomataDePila(separaTokens.ListaTokens, separaTokens.TokensApoyo);
+            if (automataPila.verificarSintaxis(txtLog))
             {
                 MessageBox.Show("Sin errores sintácticos");
             }

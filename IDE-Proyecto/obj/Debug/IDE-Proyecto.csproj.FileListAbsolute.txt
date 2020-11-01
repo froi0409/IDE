@@ -12,3 +12,7 @@ C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de P
 C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE_Proyecto.interfazGrafica.CreacionDeProyecto.resources
 C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE_Proyecto.interfazGrafica.NuevoArchivo.resources
 C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE_Proyecto.interfazGrafica.AperturaArchivo.resources
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\bin\Debug\AutocompleteMenu-ScintillaNET.dll
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\bin\Debug\ScintillaNET.dll
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\bin\Debug\ScintillaNET.xml
+C:\Users\Usuario\Documents\CUNOC\Segundo Semestre 2020\Lenguajes Formales y de Programación\Proyectos\IDE\IDE-Proyecto\obj\Debug\IDE-Proyecto.csproj.CopyComplete

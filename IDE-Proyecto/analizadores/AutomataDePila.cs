@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace IDE_Proyecto.analizadores
 {
@@ -10,13 +11,15 @@ namespace IDE_Proyecto.analizadores
     {
 
         private List<String> entrada;
+        private List<Token> informacion;
 
-        public AutomataDePila(List<String> entrada)
+        public AutomataDePila(List<String> entrada, List<Token> informacion)
         {
             this.entrada = entrada;
+            this.informacion = informacion;
         }
 
-        public bool verificarSintaxis()
+        public bool verificarSintaxis(RichTextBox txtLog)
         {
             bool comprobante = true;
             List<String> pila = new List<String>();
@@ -88,6 +91,8 @@ namespace IDE_Proyecto.analizadores
             {
                 comprobante = false;
                 Console.WriteLine("Hay errores sintácticos en el análisis");
+                txtLog.AppendText(Environment.NewLine + "Error Sintáctico en: (" + informacion[entrada.Count-2].Fila + "," + informacion[entrada.Count-2].Columna + ")");
+
             }
 
             return comprobante;

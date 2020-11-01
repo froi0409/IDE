@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IDE));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +60,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.RichTextBox();
+            this.autocompleteMenu1 = new AutocompleteMenuNS.AutocompleteMenu();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -371,6 +373,7 @@
             this.txtArea.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.autocompleteMenu1.SetAutocompleteMenu(this.txtArea, this.autocompleteMenu1);
             this.txtArea.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtArea.Location = new System.Drawing.Point(57, 0);
             this.txtArea.Name = "txtArea";
@@ -385,6 +388,7 @@
             // 
             // txtNumeracion
             // 
+            this.autocompleteMenu1.SetAutocompleteMenu(this.txtNumeracion, null);
             this.txtNumeracion.BackColor = System.Drawing.SystemColors.ControlLight;
             this.txtNumeracion.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNumeracion.Dock = System.Windows.Forms.DockStyle.Left;
@@ -429,6 +433,7 @@
             // 
             // txtLog
             // 
+            this.autocompleteMenu1.SetAutocompleteMenu(this.txtLog, null);
             this.txtLog.BackColor = System.Drawing.SystemColors.Menu;
             this.txtLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -437,6 +442,34 @@
             this.txtLog.Size = new System.Drawing.Size(1110, 156);
             this.txtLog.TabIndex = 8;
             this.txtLog.Text = "";
+            // 
+            // autocompleteMenu1
+            // 
+            this.autocompleteMenu1.AppearInterval = 1;
+            this.autocompleteMenu1.Colors = ((AutocompleteMenuNS.Colors)(resources.GetObject("autocompleteMenu1.Colors")));
+            this.autocompleteMenu1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.autocompleteMenu1.ImageList = null;
+            this.autocompleteMenu1.Items = new string[] {
+        "entero",
+        "decimal",
+        "cadena",
+        "booleano",
+        "carácter",
+        "SI",
+        "SINO",
+        "SINO_SI",
+        "MIENTRAS",
+        "HACER",
+        "DESDE",
+        "HASTA",
+        "INCREMENTO",
+        "principal",
+        "leer",
+        "escribir",
+        "verdadero",
+        "falso"};
+            this.autocompleteMenu1.MinFragmentLength = 1;
+            this.autocompleteMenu1.TargetControlWrapper = null;
             // 
             // IDE
             // 
@@ -503,5 +536,6 @@
         private System.Windows.Forms.Label lblPosicion;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.RichTextBox txtLog;
+        private AutocompleteMenuNS.AutocompleteMenu autocompleteMenu1;
     }
 }

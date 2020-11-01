@@ -12,6 +12,7 @@ namespace IDE_Proyecto.analizadores
 
         private Automata automata = new Automata();
         private List<String> tokens = new List<String>();
+        private List<Token> tokensApoyo = new List<Token>();
         private List<char> operadores;
 
         public SeparaTokens ()
@@ -68,6 +69,7 @@ namespace IDE_Proyecto.analizadores
                             {
                                 cont = contAux;
                                 tokens.Add(automata.TipoToken);
+                                tokensApoyo.Add(new Token(automata.TipoToken, line + 1, column + 1));
                             }
 
                             comprobante = true;
@@ -126,6 +128,7 @@ namespace IDE_Proyecto.analizadores
                             if (automata.Comprobar(cadenaAux))
                             {
                                 tokens.Add(automata.TipoToken);
+                                tokensApoyo.Add(new Token(automata.TipoToken, line + 1, column + 1));
                             }
                             else
                             {
@@ -154,6 +157,7 @@ namespace IDE_Proyecto.analizadores
                             if (automata.Comprobar(cadenaAux))
                             {
                                 tokens.Add(automata.TipoToken);
+                                tokensApoyo.Add(new Token(automata.TipoToken, line + 1, column + 1));
                             }
                             else
                             {
@@ -167,6 +171,7 @@ namespace IDE_Proyecto.analizadores
                 else if (automata.Comprobar(txtArea.Text[cont].ToString()))
                 {
                     tokens.Add(automata.TipoToken);
+                    tokensApoyo.Add(new Token(automata.TipoToken, line + 1, column + 1));
                 }
 
                 cont++;
@@ -181,7 +186,15 @@ namespace IDE_Proyecto.analizadores
                 return tokens;
             }
         }
-        private List<String> coord = new List<String>();
+        
+        public List<Token> TokensApoyo
+        {
+            get
+            {
+                return tokensApoyo;
+            }
+        }
+
         private void errorLexico(RichTextBox txtArea, TextBox txtLog)
         {
 
