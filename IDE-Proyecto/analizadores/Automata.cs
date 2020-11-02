@@ -107,7 +107,7 @@ namespace IDE_Proyecto.analizadores
                     cont++;
                     Q4();
                 }
-                else if (cadena[cont] == '^' || cadena[cont] == '*' || cadena[cont] == '(' || cadena[cont] == ')' || cadena[cont] == '{' || cadena[cont] == '}' || cadena[cont] == ';') //por el momento omitimos la transición char
+                else if (cadena[cont] == ',' || cadena[cont] == '^' || cadena[cont] == '*' || cadena[cont] == '(' || cadena[cont] == ')' || cadena[cont] == '{' || cadena[cont] == '}' || cadena[cont] == ';') //por el momento omitimos la transición char
                 {
                     tipoToken = cadena[cont].ToString();
                     if (cadena[cont] != ';')
