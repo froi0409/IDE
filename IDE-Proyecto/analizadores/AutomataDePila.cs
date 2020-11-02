@@ -10,13 +10,20 @@ namespace IDE_Proyecto.analizadores
     class AutomataDePila
     {
 
-        private List<String> entrada;
-        private List<Token> informacion;
+        private List<String> entrada = new List<String>();
+        private List<Token> informacion = new List<Token>();
 
         public AutomataDePila(List<String> entrada, List<Token> informacion)
         {
-            this.entrada = entrada;
-            this.informacion = informacion;
+            
+            foreach(String element in entrada)
+            {
+                this.entrada.Add(element);
+            }
+            foreach(Token element in informacion)
+            {
+                this.informacion.Add(element);
+            }
         }
 
         public bool verificarSintaxis(RichTextBox txtLog)

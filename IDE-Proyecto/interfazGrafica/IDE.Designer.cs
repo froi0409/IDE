@@ -61,6 +61,8 @@
             this.button8 = new System.Windows.Forms.Button();
             this.txtLog = new System.Windows.Forms.RichTextBox();
             this.autocompleteMenu1 = new AutocompleteMenuNS.AutocompleteMenu();
+            this.generarArbolToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this.miArbol = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -89,7 +91,9 @@
             this.abrirToolStripMenuItem,
             this.toolStripSeparator1,
             this.guardarToolStripMenuItem,
-            this.guardarComoToolStripMenuItem});
+            this.guardarComoToolStripMenuItem,
+            this.generarArbolToolStripMenuItem,
+            this.miArbol});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -101,7 +105,7 @@
             this.proyectoToolStripMenuItem,
             this.archivoToolStripMenuItem1});
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             // 
             // proyectoToolStripMenuItem
@@ -126,7 +130,7 @@
             this.proyectoToolStripMenuItem1,
             this.archivoToolStripMenuItem2});
             this.abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.abrirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.abrirToolStripMenuItem.Text = "Abrir";
             // 
             // proyectoToolStripMenuItem1
@@ -147,13 +151,13 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
             // 
             // guardarToolStripMenuItem
             // 
             this.guardarToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.flexible_opt;
             this.guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.guardarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.guardarToolStripMenuItem.Text = "Guardar";
             this.guardarToolStripMenuItem.Click += new System.EventHandler(this.guardarToolStripMenuItem_Click);
             // 
@@ -161,7 +165,7 @@
             // 
             this.guardarComoToolStripMenuItem.Image = global::IDE_Proyecto.Properties.Resources.guardar_el_archivo__2__opt;
             this.guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(183, 26);
+            this.guardarComoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.guardarComoToolStripMenuItem.Text = "Guardar Todo";
             this.guardarComoToolStripMenuItem.Click += new System.EventHandler(this.guardarComoToolStripMenuItem_Click);
             // 
@@ -465,11 +469,23 @@
         "INCREMENTO",
         "principal",
         "leer",
-        "escribir",
+        "imprimir",
         "verdadero",
         "falso"};
             this.autocompleteMenu1.MinFragmentLength = 1;
             this.autocompleteMenu1.TargetControlWrapper = null;
+            // 
+            // generarArbolToolStripMenuItem
+            // 
+            this.generarArbolToolStripMenuItem.Name = "generarArbolToolStripMenuItem";
+            this.generarArbolToolStripMenuItem.Size = new System.Drawing.Size(221, 6);
+            // 
+            // miArbol
+            // 
+            this.miArbol.Name = "miArbol";
+            this.miArbol.Size = new System.Drawing.Size(224, 26);
+            this.miArbol.Text = "Generar Arbol";
+            this.miArbol.Click += new System.EventHandler(this.miArbol_Click);
             // 
             // IDE
             // 
@@ -537,5 +553,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.RichTextBox txtLog;
         private AutocompleteMenuNS.AutocompleteMenu autocompleteMenu1;
+        private System.Windows.Forms.ToolStripSeparator generarArbolToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miArbol;
     }
 }

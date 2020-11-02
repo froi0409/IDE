@@ -14,6 +14,7 @@ namespace IDE_Proyecto.interfazGrafica
 
     using archivos;
     using analizadores;
+    using System.IO;
 
     //Todos los enum sirven para la sincronización entre los richTextBox
     public enum ScrollBarType : uint
@@ -111,8 +112,6 @@ namespace IDE_Proyecto.interfazGrafica
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
             coordenadas();
-
-
 
             //Condicion que nos sirve para verificar si hay alguna linea adicional
             int cantLineasRT = txtArea.Lines.Length;
@@ -297,6 +296,35 @@ namespace IDE_Proyecto.interfazGrafica
         {
             CreacionDeProyecto cdp = new CreacionDeProyecto("Proyecto", new PantallaInicial());
             cdp.Visible = true;
+        }
+
+        private void miArbol_Click(object sender, EventArgs e)
+        {
+            SeparaTokens separaTokens = new SeparaTokens();
+            separaTokens.SepararTokens(txtArea, txtLog);
+            separaTokens.ListaTokens.Add("$");
+            separaTokens.ListaTokens.Reverse();
+            separaTokens.TokensApoyo.Reverse();
+
+            ArbolSintactico arbol = new ArbolSintactico(separaTokens.ListaTokens, separaTokens.TokensApoyo);
+
+            String codeDot = arbol.dotCode();
+
+            Console.WriteLine(codeDot);
+
+            FolderBrowserDialog fbd = new FolderBrowserDialog(); //Clase que nos sirve para la selección de la carpeta
+            DialogResult result = fbd.ShowDialog(); //Abrimos el menú que nos permite elegir la carpeta
+            if (result == DialogResult.OK) //Condición que comprueba si el resultado del Dialog del fbd es OK
+            {
+                Bitmap bm = Dibujo.Run(codeDot);
+                bm.Save(fbd.SelectedPath + @"\Arbol.png");
+                MessageBox.Show("Se ha creado el archivo");
+            }
+            else
+            {
+                MessageBox.Show("Operación Cancelada");
+            }
+
         }
 
         private void txtArea_KeyPress(object sender, KeyPressEventArgs e)
