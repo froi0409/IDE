@@ -14,6 +14,7 @@ namespace IDE_Proyecto.interfazGrafica
 
     using archivos;
     using analizadores;
+    using System.IO;
 
     //Todos los enum sirven para la sincronización entre los richTextBox
     public enum ScrollBarType : uint
@@ -73,6 +74,7 @@ namespace IDE_Proyecto.interfazGrafica
             {
                 txtArea.Text = proyecto.ListaCodigoFuente[0].Contenido;
                 lstArchivos.SelectedIndex = 0;
+            
             }
             catch (Exception ex)
             {
@@ -218,10 +220,32 @@ namespace IDE_Proyecto.interfazGrafica
         
         private void button7_Click(object sender, EventArgs e)
         {
+            button5_Click(sender, e);
             txtLog.Text = "Area Log: " + Environment.NewLine;
-            AnalizadorLog al = new AnalizadorLog();
-            int index = txtArea.SelectionStart;
-            al.Analizar(txtArea, txtLog, index);
+            
+            SeparaTokens separaTokens = new SeparaTokens();
+            separaTokens.SepararTokens(txtArea, txtLog);
+            separaTokens.ListaTokens.Add("$");
+            separaTokens.ListaTokens.Reverse();
+            separaTokens.TokensApoyo.Reverse();
+
+            Console.WriteLine("\n\n\n--------------------------------------------");
+
+            foreach(String element in separaTokens.ListaTokens)
+            {
+                Console.WriteLine("Token: " + element);
+            }
+
+            AutomataDePila automataPila = new AutomataDePila(separaTokens.ListaTokens, separaTokens.TokensApoyo);
+            if (automataPila.verificarSintaxis(txtLog))
+            {
+                MessageBox.Show("Sin errores sintácticos");
+            }
+            else
+            {
+                MessageBox.Show("Con errores sintácticos");
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -272,6 +296,35 @@ namespace IDE_Proyecto.interfazGrafica
         {
             CreacionDeProyecto cdp = new CreacionDeProyecto("Proyecto", new PantallaInicial());
             cdp.Visible = true;
+        }
+
+        private void miArbol_Click(object sender, EventArgs e)
+        {
+            SeparaTokens separaTokens = new SeparaTokens();
+            separaTokens.SepararTokens(txtArea, txtLog);
+            separaTokens.ListaTokens.Add("$");
+            separaTokens.ListaTokens.Reverse();
+            separaTokens.TokensApoyo.Reverse();
+
+            ArbolSintactico arbol = new ArbolSintactico(separaTokens.ListaTokens, separaTokens.TokensApoyo);
+
+            String codeDot = arbol.dotCode();
+
+            Console.WriteLine(codeDot);
+
+            FolderBrowserDialog fbd = new FolderBrowserDialog(); //Clase que nos sirve para la selección de la carpeta
+            DialogResult result = fbd.ShowDialog(); //Abrimos el menú que nos permite elegir la carpeta
+            if (result == DialogResult.OK) //Condición que comprueba si el resultado del Dialog del fbd es OK
+            {
+                Bitmap bm = Dibujo.Run(codeDot);
+                bm.Save(fbd.SelectedPath + @"\Arbol.png");
+                MessageBox.Show("Se ha creado el archivo");
+            }
+            else
+            {
+                MessageBox.Show("Operación Cancelada");
+            }
+
         }
 
         private void txtArea_KeyPress(object sender, KeyPressEventArgs e)

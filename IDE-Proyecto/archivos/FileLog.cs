@@ -17,7 +17,7 @@ namespace IDE_Proyecto.archivos
         /// <param name="ruta">Ubicación de la carpeta del proyecto</param>
         /// <param name="nombre">Nombre del archivo .gtE</param>
         /// <param name="txtLog">Instancia el área Log del IDE</param>
-        public void Crear(String ruta, String nombre, TextBox txtLog)
+        public void Crear(String ruta, String nombre, RichTextBox txtLog)
         {
             StreamWriter sw = new StreamWriter(ruta + @"\" + nombre + "E");
             sw.WriteLine("Reporte de Errores - " + nombre + "E");
