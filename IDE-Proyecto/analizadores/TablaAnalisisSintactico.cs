@@ -167,6 +167,8 @@ namespace IDE_Proyecto.analizadores
             tabla[16, 17].Add("-");
             tabla[16, 17].Add("Elem");
 
+            tabla[17, 1].Add(")");
+            tabla[17, 1].Add("Suma");
             tabla[17, 1].Add("(");
             tabla[17, 6].Add("TokId");
             tabla[17, 14].Add("Num");
